@@ -7,19 +7,22 @@ To carry out this task I took the following steps;
 - Logged into my ubuntu virtual machine
 - Gained root user privilage by running the command `sudo su` which grants me administrative rights
 - To create the groups I ran the following commands:
-> `groupadd admin` -- Creates the group admin
+
+> `groupadd admin` -- Creates the `admin` group 
 >
-> `groupadd support` -- Creates the group support
+> `groupadd support` -- Creates the `support` group 
 > 
-> `groupadd engineering` -- Creates the group engineering
+> `groupadd engineering` -- Creates the  `engineering` group 
 
 To confirm that the groups were created successfully, I ran the following command:
 > `tail /etc/group | grep staff`  --- See command output below
 
 what this command does is to display the end of a file. By default, this command selects the last 10 lines of the file and displays them, in this case the `etc/group file`. And the grep command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`
 
-![/etc/group-cmdOutput](etc/group)
 
+![etc/group-cmdOutput](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-01%20Week-04/images/etc:group.png)
+
+<br>
 
 > TASK 2: Create a user in each of the groups
 
@@ -38,7 +41,7 @@ To confirm that the users were created successfully, I ran the following command
 
 what this command does is to display the end of a file. By default, this command selects the last 10 lines of the file and displays them, in this case the `etc/passwd file`. And the grep command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`
 
-![etc/passwd-cmdOutput](etc/passwd)
+![etc/passwd-cmdOutput](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-01%20Week-04/images/etc:passwd.png)
 
 
 > TASK 3: Generate SSH keys for the user in the admin group
