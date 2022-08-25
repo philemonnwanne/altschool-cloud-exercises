@@ -16,11 +16,7 @@
 To confirm that the groups were created successfully, I ran the following command:`tail /etc/group | grep staff`
 
 <samp>What this command does is to display the end of a file. By default, this command selects the last 10 lines of the file and displays them, in this case the `etc/group file`. And the grep command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`</samp><br><br>
-
 ![etc/group-cmdOutput](images/etc:group.png)
-
-<br>
-
 ## TASK 2: Create a user in each of the groups
 
 ### To carry out this task I took the following steps;
@@ -38,10 +34,7 @@ To confirm that the users were created successfully, I ran the following command
 `tail /etc/passwd | grep staff`  --- See command output below
 
 <samp>What this command does is to display the end of a file. By default, this command selects the last 10 lines of the file and displays them, in this case the `etc/passwd file`. And the grep command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`</samp>
-
 ![etc/passwd-cmdOutput](images/etc:passwd.png)
-
-
 ## TASK 3: Generate SSH keys for the user in the admin group
 
 ### To carry out this task I took the following steps;
@@ -52,13 +45,10 @@ To confirm that the users were created successfully, I ran the following command
  ![whoami](images/whoami.png)
 `pwd` -- To confirm my present working directory
 ![pwd](images/whoami.png)
-
 `ssh-keygen` -- To generate SSH keys for the user in the admin group
 
 `Note:` This gave me an error message which was as a result of the user being created via the `useradd` command, as this creates just a user without a home profile. Another alternativer was to create the user with the `adduser` command.
-
-[ssh-keygen-error](images/ssh-keygen-error.png)
-
+![ssh-keygen-error](images/ssh-keygen-error.png)
 To fix the error, I run the follwoing commands
 
 `mkdir /home/admin-staff` -- #to create the directory /home/admin-staff
@@ -80,4 +70,6 @@ To fix the error, I run the follwoing commands
 `pwd` -- To confirm my present working directory
 
 `ssh-keygen` -- To generate SSH keys for the logged in user
+
+![21-45](images/Screenshot%202022-08-25%20at%2000.21.45.png)
 
