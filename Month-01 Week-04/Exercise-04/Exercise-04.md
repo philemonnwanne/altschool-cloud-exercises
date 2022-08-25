@@ -10,7 +10,7 @@
 
 ## Steps
 
-- I ran the following command to update my package index
+- I ran the following command to update my package index:
 
 `sudo apt-get update`
 
@@ -18,9 +18,9 @@
 
 `sudo apt -y install software-properties-common`
 
-> The -y flag will automatically agree to the installation. Without that, you would receive a prompt in your terminal window for each installation.
+> The -y flag will automatically agree to the installation. Without that, there would be a prompt in the terminal window for each installation.
 
-- Next, I install the repository ppa:ondrej/php, which will give you all your versions of PHP:
+- Next, I install the repository ppa:ondrej/php, with the following command:
 
 `sudo add-apt-repository ppa:ondrej/php`
 
@@ -40,10 +40,6 @@ Which gives the below output:
 
 ![php7](images/php7.png)
 
-Output
-<p align="center">
-  <img width="660" height="320" src="images/php7.png">
-</p><br>
-
+### Contents of /etc/apt/sources.list
 
 ![etc-apt-sources](images/etc-apt-sources.png)
