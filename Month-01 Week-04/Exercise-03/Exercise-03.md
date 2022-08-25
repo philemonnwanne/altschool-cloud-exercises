@@ -16,7 +16,11 @@
 To confirm that the groups were created successfully, I ran the following command:`tail /etc/group | grep staff`
 
 <samp>What this command does is to display the end of a file. By default, this command selects the last 10 lines of the file and displays them, in this case the `etc/group file`. And the grep command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`</samp><br><br>
-![etc/group-cmdOutput](images/etc:group.png)
+
+<p align="center">
+  <img width="660" height="320" src="images/etc:group.png">
+</p><br>
+
 ## TASK 2: Create a user in each of the groups
 
 ### To carry out this task I took the following steps;
@@ -34,32 +38,49 @@ To confirm that the users were created successfully, I ran the following command
 `tail /etc/passwd | grep staff`  --- See command output below
 
 <samp>What this command does is to display the end of a file. By default, this command selects the last 10 lines of the file and displays them, in this case the `etc/passwd file`. And the grep command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`</samp>
-![etc/passwd-cmdOutput](images/etc:passwd.png)
+
+<p align="center">
+  <img width="660" height="320" src="images/etc:passwd.png">
+</p>
+
 ## TASK 3: Generate SSH keys for the user in the admin group
 
 ### To carry out this task I took the following steps;
 
 - Switched from `root` to the admin-user `(admin-staff)` using the command `sudo su`
 - I try to confirm if I am the curren tuser by running the commands:
+
 `whoami` -- To confirm the current logged in user (the user in the admin group.)
- ![whoami](images/whoami.png)
+
+<p align="center">
+  <img width="660" height="320" src="images/whoami.png">
+</p>
+
 `pwd` -- To confirm my present working directory
-![pwd](images/whoami.png)
+
+<p align="center">
+  <img width="660" height="320" src="images/pwd.png">
+</p>
+
 `ssh-keygen` -- To generate SSH keys for the user in the admin group
 
-`Note:` This gave me an error message which was as a result of the user being created via the `useradd` command, as this creates just a user without a home profile. Another alternativer was to create the user with the `adduser` command.
-![ssh-keygen-error](images/ssh-keygen-error.png)
-To fix the error, I run the follwoing commands
+> Note: This gave me an error message which was as a result of the user being created via the `useradd` command, as this creates just a user without a home profile. Another alternativer was to create the user with the `adduser` command.
 
-`mkdir /home/admin-staff` -- #to create the directory /home/admin-staff
+<p align="center">
+  <img width="660" height="320" src="images/ssh-keygen-error.png">
+</p>
 
-`ls /home` -- To confirm that the diractory was created
+To fix the error, I ran the followoing commands:
 
-`cp -rT /etc/skel /home/admin-staff` -- #to populate /home/admin-staff with default files and folders
+`mkdir /home/admin-staff` --To create the directory /home/admin-staff
+
+`ls /home` -- To confirm that the directory was created
+
+`cp -rT /etc/skel /home/admin-staff` -- To populate /home/admin-staff with default files and folders
 
 `ls -al /home/admin-staff` -- To confirm presence of the default files and folders
 
-`chown -R admin-staff:admin-staff /home/admin-staff` -- #to change the owner of /home/admin-staff to user admin-staff
+`chown -R admin-staff:admin-staff /home/admin-staff` -- To change the owner of /home/admin-staff to user admin-staff
 
 `su admin-staff` -- To switch user back to admin-staff
 
@@ -71,8 +92,7 @@ To fix the error, I run the follwoing commands
 
 `ssh-keygen` -- To generate SSH keys for the logged in user
 
-![21-45](images/Screenshot%202022-08-25%20at%2000.21.45.png)
-![22-26](images/Screenshot%202022-08-25%20at%2000.22.26.png)
-![23-46](images/Screenshot%202022-08-25%20at%2000.23.46.png)
-![24-14](images/Screenshot%202022-08-25%20at%2000.24.14.png)
-
+![21.45](images/Screenshot%202022-08-25%20at%2000.21.45.png)
+![22.26](images/Screenshot%202022-08-25%20at%2000.22.26.png)
+![23.46](images/Screenshot%202022-08-25%20at%2000.23.46.png)
+![24.14](images/Screenshot%202022-08-25%20at%2000.24.14.png)
