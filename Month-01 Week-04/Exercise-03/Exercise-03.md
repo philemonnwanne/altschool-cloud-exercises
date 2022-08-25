@@ -20,7 +20,7 @@ To confirm that the groups were created successfully, I ran the following comman
 what this command does is to display the end of a file. By default, this command selects the last 10 lines of the file and displays them, in this case the `etc/group file`. And the grep command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`
 
 
-![etc/group-cmdOutput](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-01%20Week-04/images/etc:group.png)
+![etc/group-cmdOutput](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-01%20Week-04/Exercise-03/images/etc:group.png)
 
 <br>
 
@@ -41,7 +41,7 @@ To confirm that the users were created successfully, I ran the following command
 
 what this command does is to display the end of a file. By default, this command selects the last 10 lines of the file and displays them, in this case the `etc/passwd file`. And the grep command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`
 
-![etc/passwd-cmdOutput](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-01%20Week-04/images/etc:passwd.png)
+![etc/passwd-cmdOutput](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-01%20Week-04/Exercise-03/images/etc:passwd.png)
 
 
 > TASK 3: Generate SSH keys for the user in the admin group
