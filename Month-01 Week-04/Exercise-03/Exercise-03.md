@@ -48,7 +48,7 @@ To confirm that the users were created successfully, I ran the following command
 ### To carry out this task I took the following steps;
 
 - Switched from `root` to the admin-user `(admin-staff)` using the command `sudo su`
-- I try to confirm if I am the curren tuser by running the commands:
+- I tried to confirm if I was the current user by running the command:
 
 `whoami` -- To confirm the current logged in user (the user in the admin group.)
 
