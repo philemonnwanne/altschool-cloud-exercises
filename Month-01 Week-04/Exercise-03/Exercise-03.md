@@ -72,4 +72,7 @@ To fix the error, I run the follwoing commands
 `ssh-keygen` -- To generate SSH keys for the logged in user
 
 ![21-45](images/Screenshot%202022-08-25%20at%2000.21.45.png)
+![22-26](images/Screenshot%202022-08-25%20at%2000.22.26.png)
+![23-46](images/Screenshot%202022-08-25%20at%2000.23.46.png)
+![24-14](images/Screenshot%202022-08-25%20at%2000.24.14.png)
 
