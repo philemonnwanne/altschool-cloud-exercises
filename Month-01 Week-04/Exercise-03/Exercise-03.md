@@ -1,4 +1,4 @@
-# Exercise-03 Solution
+# Exercise-03
 
 ## TASK 1: Create 3 groups - admin, support and engineering and add the admin group to sudoers.
 
