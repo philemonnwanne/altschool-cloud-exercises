@@ -1,4 +1,4 @@
-## Output of git config.l
+## Output of git config -l
 
 ```
 credential.helper=osxkeychain
