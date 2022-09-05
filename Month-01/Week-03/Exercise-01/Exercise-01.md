@@ -33,7 +33,7 @@
 
 `vagrant destroy` - This command stops the virtual machine from running, and destroys all resources that were created for the machine.
 
-`vagrant reload` - to restart the virtual machine after making changes to the vagrantfile
+`vagrant reload` - This is used to restart the virtual machine after making changes to the vagrantfile
 <br><br>
 
 ## Output (ifconfig)
