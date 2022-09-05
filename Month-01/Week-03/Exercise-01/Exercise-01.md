@@ -40,7 +40,7 @@
 ![](images/ifconfig.png)
 
 ## Vagrantfile
-```
+```ruby
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 # All Vagrant configuration is done below. 
