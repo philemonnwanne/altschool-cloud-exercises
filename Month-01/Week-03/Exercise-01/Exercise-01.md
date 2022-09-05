@@ -43,7 +43,6 @@
 ```ruby
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-# All Vagrant configuration is done below. 
 Vagrant.configure("2") do |config|
   config.vm.hostname = "ubuntu"
   # Create a private network
@@ -51,8 +50,7 @@ Vagrant.configure("2") do |config|
   # Provider-specific configuration so you can fine-tune various backing 
   # providers for Vagrant.
   # Custom configuration for docker
-  config.vm.provider :docker do |docker, override|
-    override.vm.box = nil
+  config.vm.provider :docker do |docker|
     # this is where your Dockerfile lives
     docker.image = "philemonnwanne/vagrant-provider:20.04"
     # Make sure it sets up ssh with the Dockerfile Vagrant is pretty dependent on ssh
