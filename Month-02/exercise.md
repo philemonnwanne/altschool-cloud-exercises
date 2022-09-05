@@ -1,4 +1,4 @@
-# Exercise-06
+# Exercise-05
 
 ## Task: 
 - You already have Github account, aso setup a GitLab account if you don’t have one already
