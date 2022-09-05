@@ -65,7 +65,7 @@ To confirm that the users were created successfully, I ran the following command
 
 `ssh-keygen` -- To generate SSH keys for the user in the admin group
 
-> Note: This gave me an error message which was as a result of the user being created via the `useradd` command, as this creates just a user without a home profile. Another alternativer was to create the user with the `adduser` command.
+> Note: This gave me an error message which was as a result of the user being created via the `useradd` command, as this creates just a user without a home profile. Another alternativer was to create the user with the `adduser` or `user -m` command.
 
 <p align="center">
   <img width="660" height="320" src="images/ssh-keygen-error.png">
