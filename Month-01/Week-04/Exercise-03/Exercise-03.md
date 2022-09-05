@@ -24,8 +24,9 @@ To confirm that the groups were created successfully, I ran the following comman
 ## TASK 2: Create a user in each of the groups
 
 ### To carry out this task I took the following steps;
-While still logged in as the root user
-- To create the groups I ran the following commands:
+> While still logged in as the root user
+
+To create the groups I ran the following commands:
 
 `groupadd admin` -- Creates the group admin
 
@@ -35,7 +36,7 @@ While still logged in as the root user
 
 To confirm that the users were created successfully, I ran the following command:
 
-`tail /etc/passwd | grep staff`  --- See command output below
+`tail /etc/passwd | grep staff`  -- See command output below
 
 <samp>What this command does is to display the end of a file. By default, this command selects the last 10 lines of the file and displays them, in this case the `etc/passwd file`. And the grep command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`</samp>
 
