@@ -25,7 +25,7 @@
 - To exit from my virtual machine to the host, I run the `exit` command
 - Then to stop the virtual machine from running I issue the `vagrant halt` command
 
-### Other no worthy commands are:
+### Some other commands:
 
 `vagrant status` - This will tell you the state of the machines Vagrant is managing.
 
