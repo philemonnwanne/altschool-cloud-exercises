@@ -1,13 +1,14 @@
-## Exercise 01
+## Exercise-01
 
 ## Task: 
 * Setup Ubuntu 20.04 LTS on your local machine using Vagrant
+
 ## Instruction: 
 - [ ] Customize your Vagrant file as necessary with private_network set to DHCP.
 - [ ] Once the machine is up, run ifconfig and share the output in your submission along with your Vagrant file in a folder for this exercise.
 <br><br>
 
-## Procedure:
+## Steps:
 
 - I went over to vagrants website and downloaded the right version for my local machine (mac m1).
 - I had to install docker as my vagrant provider since virtualbox doesn't provide support for m1 macbooks at the moment.
