@@ -3,10 +3,10 @@
 ## Task: Install PHP 7.4 on your local linux machine using the ppa:ondrej/php package repo.
 
 ### Terms
--  add-apt-repository: This is  a  script  which  adds  an  external  APT  repository  to   either
+- *add-apt-repository*: This is  a  script  which  adds  an  external  APT  repository  to   either
        /etc/apt/sources.list or a file in /etc/apt/sources.list.d/ or removes an already existing
        repository.
-- PHP 7
+- *PHP*: PHP is a script language and interpreter that is freely available and used primarily on Linux Web servers.
 
 ### Steps
 
