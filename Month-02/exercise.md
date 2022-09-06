@@ -5,6 +5,16 @@
 - You already have a altschool-cloud-exercises project, clone the project to your local system
 - Setup your name and email in Git’s global config
 
+## Steps:
+
+- On GitHub I chose the repository that I wanted to clone (altschool-cloud-exercises).
+- Then I clicked on “Code” and copy the `https` URL.
+- I change my current working directory to the location where I want my repository cloned.
+- I type the `git clone` command and then paste the `https` URL I copied earlier.
+
+    ```
+    git clone https://github.com/philemonnwanne/altschool-cloud-exercises.git
+    ```
 
 
 ## Output of git config -l
