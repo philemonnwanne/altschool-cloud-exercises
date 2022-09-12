@@ -16,7 +16,6 @@
     git clone https://github.com/philemonnwanne/altschool-cloud-exercises.git
     ```
 
-
 ## Output of git config -l
 
 ```
