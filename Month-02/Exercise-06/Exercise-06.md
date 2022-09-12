@@ -20,7 +20,10 @@ I ensured that I was logged in as the root user while performing all operations.
 
 
 
-## 1 - 1.1.23 Disable Automounting (Automated)
+## 1.1 Filesystem Configuration
+For the purpose of this benchmark, the requirement is to ensure that directories used for system-wide functions can be further protected by placing them on separate partitions.
+
+### 1.1.23 Disable Automounting (Automated)
 
 ### Profile Applicability:
 - Level 1 - Server
@@ -55,3 +58,34 @@ Use dpkg --info (= dpkg-deb --info) to examine archive files.
 root@ubuntu:~# 
 ```
 This confirms that autofs is not installed on my system and compliance with the above recommendation.
+
+
+## 1 - 1.4 Secure Boot Settings
+The recommendations in this section focus on securing the bootloader and settings involved in the boot process directly.
+
+### 1.4.4 Ensure authentication required for single user mode (Automated)
+
+### Profile Applicability:
+- Level 1 - Server
+- Level 1 - Workstation
+
+### Description:
+Single user mode is used for recovery when the system detects an issue during boot or by manual selection from the bootloader.
+
+### Rationale:
+Requiring authentication in single user mode prevents an unauthorized user from rebooting the system into single user to gain root privileges without credentials.
+
+### Audit:
+Perform the following to determine if a password is set for the root user:
+
+`grep -Eq '^root:\$[0-9]' /etc/shadow || echo "root is locked"`
+
+No results should be returned.
+
+My Output:
+```
+root@ubuntu:/# grep -Eq '^root:\$[0-9]' /etc/shadow || echo "root is locked"
+root is locked
+root@ubuntu:/# 
+```
+This confirms that a password is set for the root user and compliance with the above recommendation.
