@@ -54,4 +54,4 @@ dpkg-query: package 'autofs' is not installed and no information is available
 Use dpkg --info (= dpkg-deb --info) to examine archive files.
 root@ubuntu:~# 
 ```
-This confirms that autofs is not installed on my system and hence automounting is not enabled.
+This confirms that autofs is not installed on my system and compliance with the above recommendation.
