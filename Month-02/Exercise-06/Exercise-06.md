@@ -1,7 +1,7 @@
 ## Exercise 6
 
 ### Task: 
-Review the CIS benchmark for ubuntu, and try to implement at least 10 of the recommendations that has been made within the benchmark.
+Review the CIS benchmark for ubuntu and try to implement at least 10 of the recommendations that has been made within the benchmark.
 
 ### Focus Areas:
 For hardening my linux system I decided to pick 12 recommendations cutting across the areas listed below
