@@ -18,7 +18,7 @@
 - I created a directory for hosting my vagrant project
 - I changed my working directory to the directory that I created earlier in the previous step
 - I create an empty vagrantfile by running the `touch vagrantfile` command
-- I proceed to configure my vagrantfile
+- I proceed to configure my vagrantfile by setting private network to dhcp
 - Then I provision my ubuntu virtual machine using the `vagrant up` command
 - To login to my newly created linux virtual machine I issue the `vagrant ssh` command
 - While in the virtual I install the `net-tools` package so as to be able to check my ip address
