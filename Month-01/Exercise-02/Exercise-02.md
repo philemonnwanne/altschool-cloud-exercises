@@ -8,7 +8,7 @@ Research online for 10 more linux commands aside the ones already mentioned in t
 <br>
 <br>
 
-1. `cal` - Displays current system date and time
+1. `cal` - Displays a simple calendar
 
 > ![cal](images/cal.png)
 <br>
