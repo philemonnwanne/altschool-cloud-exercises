@@ -532,7 +532,7 @@ Run the following command and inspect the output to confirm that sudo is install
 `dpkg -s sudo`
 
 ###### My Output:
-```bash
+```ruby
 root@ubuntu:/home/vagrant# dpkg -s sudo
 Package: sudo
 Status: install ok installed
@@ -560,5 +560,75 @@ Homepage: http://www.sudo.ws/
 Original-Maintainer: Bdale Garbee <bdale@gag.com>
 root@ubuntu:/home/vagrant# 
 ```
-This confirms that `sudo` is installed and in compliance with the above recommendation.
+This confirms that `sudo` is installed and is in compliance with the above recommendation.
+
+
+## 6. SYSTEM MAINTENANCE
+
+### 6.1 System File Permissions
+This section provides guidance on securing aspects of system files and directories.
+
+### 6.1.2 Ensure permissions on /etc/passwd are configured (Automated)
+
+### Profile Applicability:
+- Level 1 - Server
+- Level 1 - Workstation
+
+### Description:
+The `/etc/passwd` file contains user account information that is used by many system utilities and therefore must be readable for these utilities to operate.
+
+### Rationale:
+It is critical to ensure that the `/etc/passwd` file is protected from unauthorized write access. Although it is protected by default, the file permissions could be changed either inadvertently or through malicious actions.
+
+### Audit:
+Run the following command and verify Uid and Gid are both `0/root` and Access is `644`:
+
+`stat /etc/passwd`
+
+###### My Output:
+```ruby
+root@ubuntu:/home/vagrant# stat /etc/passwd
+  File: /etc/passwd
+  Size: 1368            Blocks: 8          IO Block: 4096   regular file
+Device: 9bh/155d        Inode: 1576395     Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2022-09-16 12:03:52.831211002 +0100
+Modify: 2022-09-16 12:03:47.538559014 +0100
+Change: 2022-09-16 12:03:47.540559014 +0100
+ Birth: -
+root@ubuntu:/home/vagrant# 
+```
+This confirms that permissions on `/etc/passwd` are configured and is in compliance with the above recommendation.
+
+### 6.2 User and Group Settings
+This section provides guidance on securing aspects of the users and groups.
+Note: The recommendations in this section check local users and groups. Any users or groups from other sources such as LDAP will not be audited. In a domain environment similar checks should be performed against domain users and groups.
+
+### 6.2.1 Ensure accounts in `/etc/passwd` use shadowed passwords (Automated)
+
+### Profile Applicability:
+- Level 1 - Server
+- Level 1 - Workstation
+
+### Description:
+Local accounts can uses shadowed passwords. With shadowed passwords, The passwords are saved in shadow password file, `/etc/shadow`, encrypted by a salted one-way hash. Accounts with a shadowed password have an x in the second field in `/etc/passwd`.
+
+### Rationale:
+The `/etc/passwd` file also contains information like user ID's and group ID's that are used by many system programs. Therefore, the /etc/passwd file must remain world readable. In spite of encoding the password with a randomly-generated one-way hash function, an attacker could still break the system if they got access to the `/etc/passwd` file. This can be mitigated by using shadowed passwords, thus moving the passwords in the `/etc/passwd` file to `/etc/shadow`. The `/etc/shadow` file is set so only root will be able to read and write. This helps mitigate the risk of an attacker gaining access to the encoded passwords with which to perform a dictionary attack.
+
+> Notes:
+- All accounts must have passwords or be locked to prevent the account from being used by an unauthorized user.
+- A user account with an empty second field in /etc/passwd allows the account to be logged into by providing only the username.
+
+### Audit:
+Run the following command and verify that no output is returned:
+
+`awk -F: '($2 != "x" ) { print $1 " is not set to shadowed passwords "}' /etc/passwd`
+
+###### My Output:
+```ruby
+root@ubuntu:/home/vagrant# awk -F: '($2 != "x" ) { print $1 " is not set to shadowed passwords "}' /etc/passwd
+root@ubuntu:/home/vagrant#  
+```
+This confirms that accounts in `/etc/passwd` use shadowed passwords and is in compliance with the above recommendation.
 
