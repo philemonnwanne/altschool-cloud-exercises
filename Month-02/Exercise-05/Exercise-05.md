@@ -10,7 +10,7 @@
 - On Github I chose the repository that I wanted to clone (altschool-cloud-exercises).
 - Then I clicked on “Code” and copied the `https` URL.
 - I changed my current working directory to the location where I wanted my repository cloned.
-- I typed the `git clone` command and then pasted the `https` URL I copied earlier.
+- I typed the `git clone` command then pasted the `https` URL I copied earlier.
 
     ```
     git clone https://github.com/philemonnwanne/altschool-cloud-exercises.git
