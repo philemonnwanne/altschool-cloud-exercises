@@ -7,10 +7,10 @@
 
 ## Steps:
 
-- On GitHub I chose the repository that I wanted to clone (altschool-cloud-exercises).
-- Then I clicked on “Code” and copy the `https` URL.
-- I change my current working directory to the location where I want my repository cloned.
-- I type the `git clone` command and then paste the `https` URL I copied earlier.
+- On Github I chose the repository that I wanted to clone (altschool-cloud-exercises).
+- Then I clicked on “Code” and copied the `https` URL.
+- I changed my current working directory to the location where I wanted my repository cloned.
+- I typed the `git clone` command and then pasted the `https` URL I copied earlier.
 
     ```
     git clone https://github.com/philemonnwanne/altschool-cloud-exercises.git
@@ -18,7 +18,7 @@
 
 ## Output of git config -l
 
-```
+```ruby
 credential.helper=osxkeychain
 user.email=philemonnwanne@gmail.com
 user.name=philemonnwanne
@@ -37,14 +37,14 @@ branch.main.merge=refs/heads/main
 
 ## Output of git remote -v
 
-```
+```python
 origin	https://github.com/philemonnwanne/altschool-cloud-exercises.git (fetch)
 origin	https://github.com/philemonnwanne/altschool-cloud-exercises.git (push)
 ```
 
 ## Output of git log
 
-```
+```ruby
 commit 77fbc27a512b3dcf867ac2c44cdaf94683fd9d41
 Author: Philemon Nwanne <108567784+philemonnwanne@users.noreply.github.com>
 Date:   Thu Aug 25 16:07:22 2022 +0100
