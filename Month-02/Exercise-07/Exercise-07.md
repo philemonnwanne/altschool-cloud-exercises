@@ -22,8 +22,8 @@ For my machine to be able to send a mail I installed an SMTP server by running t
 I also installed a mail client by running the following commands:
 - `sudo apt install bsd-mailx`
 
-After installing the mail server and client, I made the necessary configuration to get them both working.
-Most of the configuration was done by editing the /etc/ssmtp/ssmtp.conf and /etc/ssmtp/revaliases files.
+After installing the mail server and client, I made the necessary configurations to get them both working.
+Most of the configuration was done by editing the `/etc/ssmtp/ssmtp.conf` and `/etc/ssmtp/revaliases` files.
 
 Here's a screnshot of both configurations:
 > /etc/ssmtp/ssmtp.conf
