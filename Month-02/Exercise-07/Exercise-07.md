@@ -8,7 +8,7 @@
 
 - [ ] Submit the content of your script, cronjob and a sample of the email sent, all in the folder for this exercise.
 
-For this exercise I carried out the following steps:
+#### For this exercise I carried out the following steps:
 
 #### SCRIPT
 1. I created a bash script to execute all neccessary commands in a predefined order. 
