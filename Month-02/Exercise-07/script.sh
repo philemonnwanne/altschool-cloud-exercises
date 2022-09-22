@@ -78,12 +78,12 @@ echo "" >> ${D}; echo "" >> ${D}
 # cp ${D} $HOME  -- For test purposes only
 
 # Send email to sys_admin at 12am
-timeout=$(date +%H:%M)
+currentTime=$(date +%H:%M)
 
-if [ ${timeout} = 00:00 ];
+if [ ${currentTime} = 00:00 ];
     then mail ${admin_mail} < ${D} &&
     # Sleep for 10 minutes and delete the previous log file
-    sleep 10 &&
+    sleep 10m &&
     rm -f ${D}
 else
     :
