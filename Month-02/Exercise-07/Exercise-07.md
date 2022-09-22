@@ -17,7 +17,7 @@
 #### MAIL
 For my machine to be able to send a mail I installed an SMTP server by running the following commands:
 - `sudo apt update` &&
-- `sudo apt install SSMTP`
+- `sudo apt install ssmtp`
 
 I also installed a mail client by running the following commands:
 - `sudo apt install bsd-mailx`
