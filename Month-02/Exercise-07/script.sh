@@ -13,10 +13,10 @@ S='/vagrant/script.sh'
 D='/vagrant/logs/logfile.log'
 DIR=/vagrant/logs
 
-# Create a logs directory in "/vagrant" but if exits skip
+# Create a logs directory in "/vagrant" but if it exists skip
 if [ "$PWD" == "$DIR" ]; 
 then  
-    echo "Directory Already Exits!"
+    echo "Directory Already Exists!"
 else
     mkdir -p $DIR
 fi
