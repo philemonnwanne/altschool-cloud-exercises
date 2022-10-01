@@ -49,10 +49,11 @@ Netmask Binary: **11111111.11111111.11111111.11110000**
 |  2^<sup>7</sup> | 2^<sup>6</sup>  | 2^<sup>5</sup>  | 2^<sup>4</sup>  | 2^<sup>3</sup> | 2^<sup>2</sup>  | 2^<sup>1</sup>  | 2^<sup>0</sup>  |
 | 128  | 64  | 32  | 16  | 8  | 4  | 2  | 1  |
 
-Total no. of octets in binary: 128+64+32+16+8+4+2+1
-= 255
+Total no. of octets in binary: 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1
 
-.<sup>.</sup>. Netmask Binary: **11111111.11111111.11111111.11110000**
+                             = 255
+
+
 
 ### First Octet:
 | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
@@ -88,7 +89,7 @@ Total: **248**
 
 Octet Sum = **255.255.255.248**
 
-Therefore: **11111111.11111111.11111111.11110000** in binary == **255.255.255.248**
+Therefore: **11111111.11111111.11111111.11110000** in binary = **255.255.255.248**
 
 ## Next is to find the wild card:
 
@@ -102,7 +103,7 @@ Wild card = **Total no. of active bits** - **Net mask**
 
 ### Next is to find the network ID:
 
-**Where:** 
+**Where** 
 
 Net Mask = **11111111.11111111.11111111.11110000**
 
@@ -144,7 +145,7 @@ Total Sum = **20**
 **Given IP** | 0  | 0  | 1  | 0  | 0  | 0  | 1  | 1  |
 **Result** | 0  | 0  | 1  | 0  | 0  | 0  | 0  | 0  |
 
-Total Sum = 32
+Total Sum = **32**
 
 .<sup>.</sup>. network IP address = **193.16.20.32**
 
@@ -154,23 +155,29 @@ Total Sum = 32
 Number of Hosts = 2^<sup>n</sup> - 2
 
 Where **n** = number of host bits minus two
+
             = number of host bits - 2
 
 This is because the first and last IP addresses are always reserved for the network and broadcast ID's respectively
 
-Note > In this case we have to count the number of host's bits (0's) in the net mask binary starting from the right, which will give a total of **3**
+> Note 
+In this case we have to count the number of host's bits (0's) in the net mask binary starting from the right, which will give a total of **3**
 
 Number of hosts = 2^<sup>3</sup> - 2
+
                 = 8 - 2
+                
                 = 6
                 
 From the details above we can then calculate the range of IP addresses and the broadcast:
 
-> Note: The **first & last IP adress** will be reserved for the network and broadcast so:
+> Note 
+The **first & last IP adress** will be reserved for the network and broadcast so:
 
 Network IP adress = **193.16.20.32**
 
 Min Range of IP's = **193.16.20.33** 
+
 Max Range of IP's = **193.16.20.38**
 
 Broadcast IP adress = **193.16.20.39**
