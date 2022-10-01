@@ -28,7 +28,7 @@ Broadcast IP: **193.16.20.39**
 
 #### Procedure:
 
-To solve this I had to first of all figure out the netmask from the given CIDR (/29)
+To solve this I had to first figure out the netmask from the given CIDR (/29)
 
 > Note:
 Th CIDR indicates the total number of active bits (1's) which also indicate the network portion of the IP address
