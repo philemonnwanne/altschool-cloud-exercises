@@ -53,7 +53,9 @@ Note:
 > Ping and telnet both returned success
 
 #### CRON
-Next thing I did after writing my bash script and setting up my mail was to set up a cronjob. To carry this out I had to install a crontab since it was the first ever to be run on my vm.
-Which `crontab -e` I was able to create and edit my first crontab. I have attached my configuration below:
+Next thing I did after writing my bash script and setting up my mail was to set up a cronjob. 
+
+To carry this out I had to install a crontab since it was the first ever to be run on my vm.
+With `crontab -e` I was able to create and edit my first crontab. I have attached my configuration below:
 
 [Crontab](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-02/Exercise-07/cron-mail.pdf)
