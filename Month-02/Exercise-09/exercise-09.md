@@ -95,7 +95,7 @@ Therefore: **11111111.11111111.11111111.11110000** in binary = **255.255.255.248
 
 Wild card = **Total no. of active bits** - **Net mask**
 
-          = 255 - 284
+          = 255 - 248
           
           = 7
           
@@ -107,13 +107,13 @@ Wild card = **Total no. of active bits** - **Net mask**
 
 Net Mask = **11111111.11111111.11111111.11110000**
 
-Given IP = **11000001.00011111.00010100.00100011**
+Given IP = **11000001.00010000.00010100.00100011**
 
 To find the **network ID**, we haveto subtract the **given IP adress** in binary form from the **net mask** also in binary which will give:
 
 ### First Octet:
-| First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| N/A  | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 **Net Mask** | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
 **Given IP** | 1  | 1  | 1  | 1  | 0  | 0  | 0  | 1  |
 **Result** | 1  | 1  | 0  | 0  | 0  | 0  | 0  | 1  |
@@ -121,8 +121,8 @@ To find the **network ID**, we haveto subtract the **given IP adress** in binary
 Total Sum = **193**
 
 ### Second Octet:
-| First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| N/A  | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 **Net Mask** | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
 **Given IP** | 0  | 0  | 0  | 1  | 0  | 0  | 0  | 0  |
 **Result** | 0  | 0  | 0  | 1  | 0  | 0  | 0  | 0  |
@@ -130,17 +130,17 @@ Total Sum = **193**
 Total Sum = **16**
 
 ### Third Octet:
-| First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| N/A  | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 **Net Mask** | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
 **Given IP** | 0  | 0  | 0  | 1  | 0  | 1  | 0  | 0  |
 **Result** | 0  | 0  | 0  | 1  | 0  | 1  | 0  | 0  |
 
 Total Sum = **20**
 
-### Third Octet:
-| First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+### Fourth Octet:
+| N/A  | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 **Net Mask** | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
 **Given IP** | 0  | 0  | 1  | 0  | 0  | 0  | 1  | 1  |
 **Result** | 0  | 0  | 1  | 0  | 0  | 0  | 0  | 0  |
