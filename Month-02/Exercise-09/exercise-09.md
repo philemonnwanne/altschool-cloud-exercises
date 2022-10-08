@@ -38,7 +38,7 @@ Converting it to binary then gives:
 
 **Host Portion:** 0's
 
-Netmask Binary: **11111111.11111111.11111111.11110000**
+Netmask Binary: **11111111.11111111.11111111.11111000**
 
 <sub>Then inorder to convert the netmask address from binary to decimal I applied the following formular:</sub>
 
@@ -111,9 +111,11 @@ Net Mask = **11111111.11111111.11111111.11111000**
 
 Given IP = **11000001.00010000.00010100.00100011**
 
-To find the **network ID**, we haveto subtract the **given IP adress** in binary form from the **net mask** also in binary which will give:
+To find the **network ID**, I do a _binary and operation_ between the **given IP address** and the **subnet mask**:
 
 ### First Octet:
+> Binary and operation between (255 & 193) or (11111111 & 11000001)
+
 | N/A  | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 **Net Mask** | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
@@ -123,6 +125,8 @@ To find the **network ID**, we haveto subtract the **given IP adress** in binary
 Total Sum = **193**
 
 ### Second Octet:
+> Binary and operation between (255 & 16) or (11111111 & 00010000)
+
 | N/A  | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 **Net Mask** | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
@@ -132,6 +136,8 @@ Total Sum = **193**
 Total Sum = **16**
 
 ### Third Octet:
+> Binary and operation between (255 & 20) or (11111111 & 00010100)
+
 | N/A  | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 **Net Mask** | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
@@ -141,9 +147,11 @@ Total Sum = **16**
 Total Sum = **20**
 
 ### Fourth Octet:
+> Binary and operation between (248 & 35) or (11111000 & 00100011)
+
 | N/A  | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-**Net Mask** | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
+**Net Mask** | 1  | 1  | 1  | 1  | 1  | 0  | 0  | 0  |
 **Given IP** | 0  | 0  | 1  | 0  | 0  | 0  | 1  | 1  |
 **Result** | 0  | 0  | 1  | 0  | 0  | 0  | 0  | 0  |
 
