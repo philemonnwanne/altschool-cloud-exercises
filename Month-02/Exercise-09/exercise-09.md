@@ -83,13 +83,13 @@ Total: **255**
 | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | 128  | 64  | 32  | 16  | 8  | 4  | 2  | 1  |
-| 1  | 1  | 1  | 1  | 0  | 0  | 0  | 0  |
+| 1  | 1  | 1  | 1  | 1  | 0  | 0  | 0  |
 
 Total: **248**
 
 Octet Sum = **255.255.255.248**
 
-Therefore: **11111111.11111111.11111111.11110000** in binary = **255.255.255.248**
+Therefore: **11111111.11111111.11111111.11111000** in binary = **255.255.255.248**
 
 ## Next is to find the wild card:
 
@@ -107,7 +107,7 @@ Wild card = subtract the **subnet mask** from **255.255.255.255**
 
 **Where** 
 
-Net Mask = **11111111.11111111.11111111.11110000**
+Net Mask = **11111111.11111111.11111111.11111000**
 
 Given IP = **11000001.00010000.00010100.00100011**
 
@@ -117,7 +117,7 @@ To find the **network ID**, we haveto subtract the **given IP adress** in binary
 | N/A  | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 **Net Mask** | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
-**Given IP** | 1  | 1  | 1  | 1  | 0  | 0  | 0  | 1  |
+**Given IP** | 1  | 1  | 0  | 0  | 0  | 0  | 0  | 1  |
 **Result** | 1  | 1  | 0  | 0  | 0  | 0  | 0  | 1  |
 
 Total Sum = **193**
