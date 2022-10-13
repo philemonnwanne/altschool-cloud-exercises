@@ -33,7 +33,7 @@ echo "CURRENT DATE/TIME" >> ${D}
 # Just a demarcation
 echo "------------------------------------" >> ${D}
 
-# Display the curent date and time in UTC format
+# Display the current date and time in UTC format
 date >> ${D}
 
 # Insert an empty line
