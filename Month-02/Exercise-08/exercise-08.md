@@ -135,7 +135,17 @@ PLAY RECAP *********************************************************************
 172.19.0.2                : ok=1    changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
 
-As can be seen from the output above, 7 changes were made and there were no failures, so our playbook executed successfully. You can confirm by accessing the managed node and checking the timezone.  
+**In the above output you can see:**
+
+- The names that you give the play and each task. You should always use descriptive names that make it easy to verify and troubleshoot playbooks.
+
+- The Gather Facts task runs implicitly. By default Ansible gathers information about your inventory that it can use in the playbook.
+
+- The status of each task. Each task has a status of ok which means it ran successfully.
+
+- The play recap that summarizes results of all tasks in the playbook per host. In this example, there are three tasks so ok=3 indicates that each task ran successfully.
+
+Congratulations! You have just created your first Ansible playbook.
 
 
 ### Intial output of the timezonectl before modification by the ansible controller:
@@ -151,5 +161,7 @@ vagrant@remote:~$ cat /etc/timezone
 Africa/Lagos
 ```
 
+
+![timezone-output](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-02/Exercise-08/images/etc-timezone.png)
 
 
