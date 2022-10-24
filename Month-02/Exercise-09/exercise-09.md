@@ -1,4 +1,4 @@
-## Exercise 9
+# Exercise 9
 
 ### Task:
 
@@ -28,19 +28,19 @@ Broadcast IP: **193.16.20.39**
 
 #### Procedure:
 
-To solve this I had to first figure out the netmask from the given CIDR (/29)
+To solve this first figure out the netmask from the given CIDR (/29)
 
 > Note:
-Th CIDR indicates the total number of active bits (1's) which also indicate the network portion of the IP address
+The CIDR indicates the total number of active bits (1's) which also indicate the network portion of the IP address
 Converting it to binary then gives:
 
 **Network Portion:** 1's
 
 **Host Portion:** 0's
 
-Netmask Binary: **11111111.11111111.11111111.11111000**
+**Netmask Binary:** 11111111.11111111.11111111.11111000
 
-<sub>Then inorder to convert the netmask address from binary to decimal I applied the following formular:</sub>
+Then inorder to convert the netmask address from binary to decimal I applied the following formular
 
 > Note: In the binary system there are only 1s and 0s. Depending on their position in the octet, they get different values. Each position is a power of 2. To get the decimal number you have to sum up those number.
 
@@ -52,7 +52,6 @@ Netmask Binary: **11111111.11111111.11111111.11111000**
 Total no. of octets in binary: 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1
 
                              = 255
-
 
 
 ### First Octet:
