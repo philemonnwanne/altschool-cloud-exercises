@@ -1,7 +1,7 @@
 
-### Exercise 8
+# Exercise 8
 
-#### Task:
+### Task:
 
 - Create an Ansible Playbook to setup a server with Apache
 - The server should be set to the Africa/Lagos Timezone
@@ -11,25 +11,25 @@
 date("F d, Y h:i:s A e", time());
 ?>
 ```
-#### Instruction:
+### Instruction:
 
  * [ ] Submit the Ansible playbook, the output of systemctl status apache2 after deploying the playbook and a screenshot of the rendered page
 
 
 
-#### Procedure
-- I installed ansible on the controlling machine or node
+## Procedure
+- Install ansible on the controlling machine or node
 
-### Inventory
-- Created a new inventory file named inventory.yaml in my home directory
-- Added my server to the inventory file by adding it's IP address to the file
+### Create and Verify Ansible Inventory File
+- Create a new inventory file named inventory.yaml in my home directory
+- Add your server to the inventory file by adding it's IP address to the file
 
-Inventory file:
-[inventory](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-02/Exercise-08/inventory.yaml)
+**Inventory file:**
+See my inventory file here [inventory](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-02/Exercise-08/inventory.yaml)
 
 Verify your inventory. If you created your inventory in a directory other than your home directory, specify the full path with the -i option.
 
-- I verified my inventory by running the command: `ansible-inventory -i inventory.yaml --list`
+- **I verify my inventory by running the command:** `ansible-inventory -i inventory.yaml --list`
 
 Output Below:
 ```ruby
@@ -49,10 +49,9 @@ vagrant@local:/etc/ansible$ ansible-inventory inventory.yaml --list
 }
 ```
 
-- Pinged the managed node in my inventory using: `ansible virtualmachines -m ping -i inventory.yaml`
+- **Pinged the managed node in my inventory using:** `ansible virtualmachines -m ping -i inventory.yaml`
 
-
-Output Below:
+**Output Below:**
 ```ruby
 vagrant@local:~$ ansible servers -m ping -i inventory.yaml
 amazon-server | SUCCESS => {
@@ -64,23 +63,89 @@ amazon-server | SUCCESS => {
 }
 ```
 
-Then I perfomed a dry run by issuing the command: `ansible-playbook playbook.yaml --check`
+Perfom a dry run by issuing the command: `ansible-playbook playbook.yaml --check`
 
 > Note:  This is used when creating or editing a playbook or role to know what it will do. In check mode, Ansible runs without making any changes on remote systems. Modules that support check mode report the changes they would have made and modules that do not support check mode report nothing and do nothing.
 
-Output Here;
-
+**Output Here:**
 ```ruby
+vagrant@local:~$ ansible-playbook -i inventory.yaml playbook.yaml --check
 
+PLAY [deploy apache2 on host server[remote]] *************************************************
+
+TASK [Gathering Facts] ***********************************************************************
+ok: [172.19.0.2]
+
+TASK [Update all packages to their latest version] *******************************************
+ok: [172.19.0.2]
+
+TASK [Install Apache server/PHP/Apache-PHP-module] *******************************************
+ok: [172.19.0.2]
+
+TASK [Remove useless packages from the cache & dependencies that are no longer required] *****
+ok: [172.19.0.2]
+
+TASK [Start/restart service apache2, if not started] *****************************************
+changed: [172.19.0.2]
+
+TASK [set timezone to Africa/Lagos] **********************************************************
+ok: [172.19.0.2]
+
+TASK [Copy my "index.php" file to the host server[remote]] ***********************************
+ok: [172.19.0.2]
+
+PLAY RECAP ***********************************************************************************
+172.19.0.2                 : ok=7    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
 
-###### Intial output of the timezonectl before modification by the ansible controller:
+
+### Execute Playbook
+Finally to get ansible to run plays in the playbook on the managed node use the command:
+```ruby
+vagrant@local:~$ ansible-playbook -i inventory.yaml playbook.yaml
+```
+**Output Here:**
+```ruby
+vagrant@local:~$ ansible-playbook -i inventory playbook.yml --check
+
+PLAY [deploy apache2 on host server[remote]] *************************************************
+
+TASK [Gathering Facts] ***********************************************************************
+ok: [172.19.0.2]
+
+TASK [Update all packages to their latest version] *******************************************
+changed: [172.19.0.2]
+
+TASK [Install Apache server/PHP/Apache-PHP-module] *******************************************
+changed: [172.19.0.2]
+
+TASK [Remove useless packages from the cache & dependencies that are no longer required] *****
+changed: [172.19.0.2]
+
+TASK [Start/restart service apache2, if not started] *****************************************
+changed: [172.19.0.2]
+
+TASK [set timezone to Africa/Lagos] **********************************************************
+changed: [172.19.0.2
+
+TASK [Copy my "index.php" file to the host server[remote]] ***********************************
+changed: [172.19.0.2]
+
+PLAY RECAP ***********************************************************************************
+172.19.0.2                : ok=1    changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+```
+
+As can be seen from the output above, 7 changes were made and there were no failures, so our playbook executed successfully. You can confirm by accessing the managed node and checking the timezone.  
+
+
+### Intial output of the timezonectl before modification by the ansible controller:
 ```bash
 vagrant@remote:~$ cat /etc/timezone
 America/Aruba
 ```
 
-##### Final output of timezonectl:
+
+### Final output of timezonectl:
 ```bash
 vagrant@remote:~$ cat /etc/timezone
 Africa/Lagos
