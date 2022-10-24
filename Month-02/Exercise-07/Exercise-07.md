@@ -29,10 +29,10 @@ Here's a screnshot of both configurations:
 > /etc/ssmtp/ssmtp.conf
 ```ruby
 vagrant@ubuntu:/$ cat /etc/ssmtp/ssmtp.conf
-root=philemonnwanne@gmail.com
+root==*********@mail.com
 mailhub=smtp.gmail.com:587
 hostname=ubuntu
-AuthUser=philemonnwanne@gmail.com
+AuthUser=*********@mail.com
 AuthPass=**************** [This is my gmail app password]
 UseSTARTTLS=yes
 UseTLS=yes
