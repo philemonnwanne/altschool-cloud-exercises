@@ -6,7 +6,7 @@
 
 # Variable declaration
 sys_admin="Philemon Nwanne"
-admin_mail="philemonnwanne@gmail.com"
+admin_mail="**********@mail.com"
 LOG_FILE='/vagrant/logs/log_file.log'
 LOG_DIR='/vagrant/logs'
 
