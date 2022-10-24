@@ -224,7 +224,7 @@ root@bullseye:~# systemctl restart apache2
 ```
 
 ### Access Laravel
-Now, open your web browser and access the Laravel using the URL http://laravel.example.com. You will be redirected to the Laravel default page:
+Now, open your web browser and access the Laravel site. You will be redirected to the Laravel default page:
 
 
 ### Rendered Page
