@@ -129,7 +129,7 @@ TASK [Install Apache server/PHP/Apache-PHP-module] *****************************
 changed: [172.19.0.2]
 
 TASK [Remove useless packages from the cache & dependencies that are no longer required] *****
-changed: [172.19.0.2]
+ok: [172.19.0.2]
 
 TASK [Start/restart service apache2, if not started] *****************************************
 changed: [172.19.0.2]
@@ -141,7 +141,7 @@ TASK [Copy my "index.php" file to the host server[remote]] *********************
 changed: [172.19.0.2]
 
 PLAY RECAP ***********************************************************************************
-172.19.0.2                : ok=7    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+172.19.0.2                : ok=7    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
 
 **In the above output you can see:**
