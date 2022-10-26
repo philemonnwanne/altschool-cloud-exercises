@@ -1,11 +1,20 @@
 # Exercise-05
 
-## Task: 
+### Task: 
 - You already have Github account, aso setup a GitLab account if you don’t have one already
 - You already have a altschool-cloud-exercises project, clone the project to your local system
 - Setup your name and email in Git’s global config
 
-## Steps:
+### Instruction:
+
+Submit the output of
+
+- [ ] git config -l
+- [ ] git remote -v
+- [ ] git log
+<br>
+
+### Procedure
 
 - On Github navigate to the repository that you want to clone, in this case (altschool-cloud-exercises)
 - Click on the green button which says `Code` and copy the `https` URL
