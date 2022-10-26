@@ -21,17 +21,20 @@ date("F d, Y h:i:s A e", time());
 - Install ansible on the controlling machine or node
 
 ### Create and Verify Ansible Inventory File
-- Create a new inventory file named inventory.yaml in my home directory
+- Create a new inventory file named `inventory.yaml` in your home directory
 - Add your server to the inventory file by adding it's IP address to the file
 
-**Inventory file:**
+**Inventory file**
 See my inventory file here [inventory](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-02/Exercise-08/inventory.yaml)
 
-Verify your inventory. If you created your inventory in a directory other than your home directory, specify the full path with the -i option.
+Verify your inventory, if you created your inventory in a directory other than your home directory, specify the full path with the `-i` option.
 
-- **I verify my inventory by running the command:** `ansible-inventory -i inventory.yaml --list`
+**Verify your inventory by running the command** 
+```yaml
+ansible-inventory -i inventory.yaml --list
+```
 
-Output Below:
+Output Below
 ```ruby
 vagrant@local:/etc/ansible$ ansible-inventory inventory.yaml --list
 {
@@ -49,7 +52,10 @@ vagrant@local:/etc/ansible$ ansible-inventory inventory.yaml --list
 }
 ```
 
-- **Pinged the managed node in my inventory using:** `ansible virtualmachines -m ping -i inventory.yaml`
+**Pinged the managed node in your inventory using** 
+```yaml
+ansible virtualmachines -m ping -i inventory.yaml
+```
 
 **Output Below:**
 ```ruby
@@ -63,7 +69,10 @@ amazon-server | SUCCESS => {
 }
 ```
 
-Perfom a dry run by issuing the command: `ansible-playbook playbook.yaml --check`
+Perfom a dry run by issuing the command 
+```yaml
+ansible-playbook playbook.yaml --check
+```
 
 > Note:  This is used when creating or editing a playbook or role to know what it will do. In check mode, Ansible runs without making any changes on remote systems. Modules that support check mode report the changes they would have made and modules that do not support check mode report nothing and do nothing.
 
