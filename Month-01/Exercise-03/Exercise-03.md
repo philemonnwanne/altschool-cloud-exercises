@@ -1,99 +1,175 @@
 # Exercise-03
 
-## TASK 1: Create 3 groups - admin, support and engineering and add the admin group to sudoers.
+### Task:
+- Create 3 groups – admin, support & engineering and add the admin group to sudoers.
+- Create a user in each of the groups.
+- Generate SSH keys for the user in the admin group.
 
-### To carry out this task I took the following steps;
-- Logged into my ubuntu virtual machine
-- Gained root user privilage by running the command `sudo su` which grants me administrative rights
-- To create the groups I ran the following commands:
+### Instruction:
+ - [ ] Submit the contents of /etc/passwd, /etc/group, /etc/sudoers
 
-`groupadd admin` -- Creates the `admin` group 
+### Procedure
+- Log into your ubuntu virtual machine
+- Gain root user privilage by running the command `sudo su`
+- To create the groups run the following commands:
 
-`groupadd support` -- Creates the `support` group 
 
-`groupadd engineering` -- Creates the  `engineering` group 
+### Create 3 groups
 
-To confirm that the groups were created successfully, I ran the following command:`tail /etc/group | grep staff`
+The `groupadd` command is used to create a group  in linux. So to create the three groups as instructed above, run the following commands.
 
-<samp>What this command does is to display the end of a file. By default, this command selects the last 10 lines of the file and displays them, in this case the `etc/group file`. And the grep command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`</samp><br><br>
+```
+groupadd admin
 
-<p align="center">
-  <img width="660" height="320" src="images/etc:group.png">
-</p><br>
+groupadd support
 
-## TASK 2: Create a user in each of the groups
+groupadd engineering
+```
 
-### To carry out this task I took the following steps;
-> While still logged in as the root user
+To confirm that the groups were created successfully run the next command
+```
+cat /etc/group | grep staff
+```
 
-To create the groups I ran the following commands:
+> This command displays the contents of a file and the `grep` command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`
 
-`groupadd admin` -- Creates the group admin
+```python
+root@ubuntu:/home/vagrant/altschool# cat /etc/group | grep staff
+staff:x:50:
+admin:x:1001:admin-staff
+support:x:1002:support-staff
+engineering:x:1003:engineering-staff
+admin-staff:x:1004:
+support-staff:x:1005:
+engineering-staff:x:1006:
+```
 
-`groupadd support` -- Creates the group support
 
-`groupadd engineering` -- Creates the group engineering
+### Create a user in each of the groups
 
-To confirm that the users were created successfully, I ran the following command:
+To add a user to each group, run the `useradd` command
 
-`tail /etc/passwd | grep staff`  -- See command output below
+```
+useradd -G admin admin-staff
+```
+<samp>creates  and adds the `admin-staff` user to the `admin` group</samp>
 
-<samp>What this command does is to display the end of a file. By default, this command selects the last 10 lines of the file and displays them, in this case the `etc/passwd file`. And the grep command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`</samp>
+```
+useradd -G support support-staff
+```
+<samp>creates  and adds the `support-staff` user to the `support` group</samp>
 
-<p align="center">
-  <img width="660" height="320" src="images/etc:passwd.png">
-</p>
+```
+useradd -G engineering engineering-staff
+```
+<samp>creates  and adds the `engineering-staff` user to the `engineering` group</samp> 
 
-## TASK 3: Generate SSH keys for the user in the admin group
+> Notice that I added the `-G` option, and what this does is to add a secondary group to the user upon it's creation. Note the user will already have a default primary group which will reman unaffected.
 
-### To carry out this task I took the following steps;
 
-- Switched from `root` to the admin-user `(admin-staff)` using the command `sudo su`
-- I tried to confirm if I was the current user by running the command:
+To confirm that the users were created successfully run the next command
 
-`whoami` -- To confirm the current logged in user (the user in the admin group.)
+```
+tail /etc/passwd | grep staff
+```
 
-<p align="center">
-  <img width="660" height="320" src="images/whoami.png">
-</p>
+> This command displays the end of a file, and by default it selects the last 10 lines of the file and displays them. And the grep command searches the file for the argument passed after it and fetches every occurence of that argument in this case `staff`
 
-`pwd` -- To confirm my present working directory
+```python
+root@ubuntu:/home/vagrant/altschool# tail /etc/passwd | grep staff
+admin-staff:x:1001:1004::/home/admin-staff:/bin/sh
+support-staff:x:1002:1005::/home/support-staff:/bin/sh
+engineering-staff:x:1003:1006::/home/engineering-staff:/bin/sh
+```
 
-<p align="center">
-  <img width="660" height="320" src="images/pwd.png">
-</p>
 
-`ssh-keygen` -- To generate SSH keys for the user in the admin group
+### Generate SSH keys for the user in the admin group
 
-> Note: This gave me an error message which was as a result of the user being created via the `useradd` command, as this creates just a user without a home profile. Another alternativer was to create the user with the `adduser` or `user -m` command.
+To generate ssh keys for the `admin-staff` user, we have to switch to that user
+```
+su admin-staff
+```
 
-<p align="center">
-  <img width="660" height="320" src="images/ssh-keygen-error.png">
-</p>
+Run the following command to confirm that you are the desired user
+```
+whoami
+```
 
-To fix the error, I ran the followoing commands:
+Your output should look similar to mine
+```php
+$ whoami
+admin-staff
+```
 
-`mkdir /home/admin-staff` --To create the directory /home/admin-staff
+Now inorder to generate ssh keys for the current user run the following command
 
-`ls /home` -- To confirm that the directory was created
+```
+ssh-keygen
+```
 
-`cp -rT /etc/skel /home/admin-staff` -- To populate /home/admin-staff with default files and folders
+> Note: This gave me an error message which was as a result of the user being created via the `useradd` command, as this creates just a user without a home directory. Another alternativer was to create the user with the `adduser` or `user -m` command.
+<br>
 
-`ls -al /home/admin-staff` -- To confirm presence of the default files and folders
+To fix the error, I ran the followoing commands
 
-`chown -R admin-staff:admin-staff /home/admin-staff` -- To change the owner of /home/admin-staff to user admin-staff
+```
+mkdir /home/admin-staff
+``` 
+- <samp>creates the directory `/home/admin-staff`</samp>
+<br>
 
-`su admin-staff` -- To switch user back to admin-staff
+```
+ls /home
+```
+- <samp>confirms that the directory was created</samp>
+<br>
 
-`cd home/admin-staff` -- To navigate to the home directory of `admin-staff`
+```
+cp -rT /etc/skel /home/admin-staff
+```
+- <samp>populates /home/admin-staff with default files and folders</samp>
+<br>
 
-`whoami` -- To confirm the current logged in user
+```
+ls -al /home/admin-staff
+```
+- <samp>confirms presence of the default files and folders</samp>
+<br>
 
-`pwd` -- To confirm my present working directory
+```
+chown -R admin-staff:admin-staff /home/admin-staff
+``` 
+- <samp>changes the owner of /home/admin-staff to user admin-staff</samp>
+<br>
 
-`ssh-keygen` -- To generate SSH keys for the logged in user
+Now that the `admin-staff` user has a home directory we can proceed to generate ssh keys for them. So run the `ssh-keygen` command again.
 
-![21.45](images/Screenshot%202022-08-25%20at%2000.21.45.png)
-![22.26](images/Screenshot%202022-08-25%20at%2000.22.26.png)
-![23.46](images/Screenshot%202022-08-25%20at%2000.23.46.png)
-![24.14](images/Screenshot%202022-08-25%20at%2000.24.14.png)
+```
+ssh-keygen
+```
+
+Accept all prompts for you to have the default configuration. If the command was successful, you should a similar output to the one below.
+
+```bash
+vagrant@ubuntu:~$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/vagrant/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/vagrant/.ssh/id_rsa
+Your public key has been saved in /home/vagrant/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:c9VEwnDWqPDb+V2cwWNcmTcnd7XDO93DPqMnztnXisk vagrant@ubuntu
+The key's randomart image is:
++---[RSA 3072]----+
+|          .o++o =|
+|        .  oo+++B|
+|         o .. +**|
+|          o.  .*=|
+|        S .o ..**|
+|         o. o ..=|
+|             . =o|
+|           ..+=.*|
+|            E=+o.|
++----[SHA256]-----+
+```
