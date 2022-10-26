@@ -4,8 +4,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "ubuntu"
   # Create a private network
   config.vm.network "private_network", type: "dhcp"
-  # Provider-specific configuration so you can fine-tune various backing 
-  # providers for Vagrant.
+  # Provider-specific configuration so you can fine-tune various backing providers for Vagrant.
   # Custom configuration for docker
   config.vm.provider :docker do |docker|
     # this is where your Dockerfile lives
