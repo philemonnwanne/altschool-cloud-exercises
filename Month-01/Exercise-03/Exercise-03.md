@@ -52,17 +52,19 @@ To add a user to each group, run the `useradd` command
 ```
 useradd -G admin admin-staff
 ```
-<samp>creates  and adds the `admin-staff` user to the `admin` group</samp>
+- <samp>creates  and adds the `admin-staff` user to the `admin` group</samp>
+<br>
 
 ```
 useradd -G support support-staff
 ```
-<samp>creates  and adds the `support-staff` user to the `support` group</samp>
+- <samp>creates  and adds the `support-staff` user to the `support` group</samp>
+<br>
 
 ```
 useradd -G engineering engineering-staff
 ```
-<samp>creates  and adds the `engineering-staff` user to the `engineering` group</samp> 
+- <samp>creates  and adds the `engineering-staff` user to the `engineering` group</samp> 
 
 > Notice that I added the `-G` option, and what this does is to add a secondary group to the user upon it's creation. Note the user will already have a default primary group which will reman unaffected.
 
