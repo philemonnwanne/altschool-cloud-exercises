@@ -60,5 +60,9 @@ I have attached my configuration below:
 
 [crontab](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-02/Exercise-07/cronjob)
 
+```ruby
+* * * * * bash /home/vagrant/script.sh
+```
+
 #### Mail Output
 [mail](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-02/Exercise-07/cron-mail.pdf)
