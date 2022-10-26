@@ -104,7 +104,7 @@ TASK [Copy my "index.php" file to the host server[remote]] *********************
 ok: [172.19.0.2]
 
 PLAY RECAP ***********************************************************************************
-172.19.0.2                 : ok=7    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+172.19.0.2                 : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
 
 
@@ -141,7 +141,7 @@ TASK [Copy my "index.php" file to the host server[remote]] *********************
 changed: [172.19.0.2]
 
 PLAY RECAP ***********************************************************************************
-172.19.0.2                : ok=1    changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+172.19.0.2                : ok=7    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
 
 **In the above output you can see:**
