@@ -23,7 +23,7 @@ You have now successfully cloned a github repository
 
 ## Output of git config -l
 
-```ruby
+```php
 credential.helper=osxkeychain
 user.email=philemonnwanne@gmail.com
 user.name=philemonnwanne
@@ -49,7 +49,7 @@ origin	https://github.com/philemonnwanne/altschool-cloud-exercises.git (push)
 
 ## Output of git log
 
-```ruby
+```php
 commit 77fbc27a512b3dcf867ac2c44cdaf94683fd9d41
 Author: Philemon Nwanne <108567784+philemonnwanne@users.noreply.github.com>
 Date:   Thu Aug 25 16:07:22 2022 +0100
