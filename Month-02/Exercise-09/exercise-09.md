@@ -28,7 +28,7 @@ Broadcast IP: **193.16.20.39**
 
 #### Procedure:
 
-To solve this first figure out the netmask from the given CIDR (/29)
+To solve this, you ahve to first figure out the netmask from the given CIDR (/29)
 
 > Note:
 The CIDR indicates the total number of active bits `1's` which also indicate the network portion of the IP address
@@ -42,7 +42,7 @@ Converting it to binary then gives:
 
 Then inorder to convert the netmask address from binary to decimal apply the following formular
 
-> Note: In the binary system there are only `1s` and `0s`. Depending on their position in the octet, they get different values. Each position is a power of 2. To get the decimal number you have to sum up those number.
+> Note: In the binary system there are only `1s` and `0s`. Depending on their position in the octet, they get different values. Each position is a power of 2. To get the decimal number you have to sum up those numbers.
 
 | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
