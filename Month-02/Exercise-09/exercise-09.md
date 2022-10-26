@@ -31,7 +31,7 @@ Broadcast IP: **193.16.20.39**
 To solve this first figure out the netmask from the given CIDR (/29)
 
 > Note:
-The CIDR indicates the total number of active bits (1's) which also indicate the network portion of the IP address
+The CIDR indicates the total number of active bits `1's` which also indicate the network portion of the IP address
 Converting it to binary then gives:
 
 **Network Portion:** 1's
@@ -40,9 +40,9 @@ Converting it to binary then gives:
 
 **Netmask Binary:** 11111111.11111111.11111111.11111000
 
-Then inorder to convert the netmask address from binary to decimal I applied the following formular
+Then inorder to convert the netmask address from binary to decimal apply the following formular
 
-> Note: In the binary system there are only 1s and 0s. Depending on their position in the octet, they get different values. Each position is a power of 2. To get the decimal number you have to sum up those number.
+> Note: In the binary system there are only `1s` and `0s`. Depending on their position in the octet, they get different values. Each position is a power of 2. To get the decimal number you have to sum up those number.
 
 | First Octet  | Second Octet | Third Octet | Fourth Octet | Fifth Octet | Sixth Octet | Seventh Octet | Eight Octet |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -110,7 +110,7 @@ Net Mask = **11111111.11111111.11111111.11111000**
 
 Given IP = **11000001.00010000.00010100.00100011**
 
-To find the **network ID**, I do a _binary and operation_ between the **given IP address** and the **subnet mask**:
+To find the **network ID**, perform a `binary and operation` between the **given IP address** and the **subnet mask**:
 
 ### First Octet:
 > Binary and operation between (255 & 193) or (11111111 & 11000001)
@@ -170,7 +170,7 @@ Where **n** = number of host bits minus two
 This is because the first and last IP addresses are always reserved for the network and broadcast ID's respectively
 
 > Note 
-In this case we have to count the number of host's bits (0's) in the net mask binary starting from the right, which will give a total of **3**
+In this case we have to count the number of host's bits `0's` in the net mask binary starting from the right, which will give a total of **3**
 
 Number of hosts = 2^<sup>3</sup> - 2
 
