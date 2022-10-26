@@ -1,5 +1,5 @@
 ## THIS PROJECT HAS THE FOLLOWING REQUIREMENTS
-- Virtual machinen running Debian 11 Server aka (Bullseye)
+- Virtual machine running Debian 11 Server aka (Bullseye)
 - Git, Apache, Wget, Curl
 - Php 8.1 and it's dependencies
 - Mysql/MariaDb Database
@@ -21,7 +21,7 @@ PHP – programming/scripting language used for developing web applications.
 
 ### Prerequisites to Install LAMP
 - Root access to your server or a sudo user
-- Domain pointed to your server IP to install
+- Domain pointed to your server's IP
 
 ### Update the Package Installer
 
@@ -45,7 +45,7 @@ apache2 \
 curl
 ```
 
-> Note: The **-y** si to anser yes to all prompts
+> Note: The `-y` is to answer yes to all prompts
 
 
 ### Install PHP
@@ -78,17 +78,17 @@ php -v
 
 ### Install Laravel 8 Using Composer 
 
-Switch to the apache's document root
+Switch to apache's document root
 ```php
 cd /var/www/
 ```
 
-Create a directory to house your project, for the purpose of this project I will call mine **mini-project**
+Create a directory to house your project, for the purpose of this project I will call mine `mini-project`
 ```php
 mkdir mini-project
 ```
 
-Switch to your projects directory `in my case I named it (mini-project)` and clone the [laravel project](https://github.com/f1amy/laravel-realworld-example-app.git) from github
+Switch to the directory created in the previous step and clone the [laravel project](https://github.com/f1amy/laravel-realworld-example-app.git) from github
 
 ```php
 cd mini-project
@@ -205,13 +205,16 @@ a2ensite mini-project.conf
 Finally, reload the Apache service to apply the changes
 
 ```php
-systemctl restart apache2
+systemctl reload apache2
 ```
 
 
 ### Access Laravel
-Now, open your web browser and access the Laravel site by visiting your domain. You will be redirected to the Laravel default page. If you get a    404 | not fond   error, make sure to do the following...
+Now, open your web browser and access the Laravel site by visiting your domain. You will be redirected to the Laravel default page. If you get a `404 | not found` error, make sure to do the following...
 - move to your `routes` directory in your project directory which in my case is `/var/www/mini-project/laravel/routes`
+```php
+cd /var/www/mini-project/laravel/routes
+```
 - look for a file name `web.php` and remove the comments on the block of code which starts with `Routes::` it should look something like the file below
 ```php
 <?php
