@@ -52,10 +52,9 @@ package `autofs` is not installed
 ###### My Output:
 
 ```ruby
-root@ubuntu:~# dpkg -s autofs
+root@ubuntu:/# dpkg -s autofs
 dpkg-query: package 'autofs' is not installed and no information is available
 Use dpkg --info (= dpkg-deb --info) to examine archive files.
-root@ubuntu:~# 
 ```
 This confirms that `autofs` is not installed on my system and is in compliance with the above recommendation.
 
@@ -83,12 +82,33 @@ Perform the following to determine if a password is set for the root user:
 No results should be returned.
 
 ###### My Output:
-```ruby
+```php
 root@ubuntu:/# grep -Eq '^root:\$[0-9]' /etc/shadow || echo "root is locked"
 root is locked
+```
+This confirms that no password is set for the root user and therefore is not in compliance with the above recommendation. To fix this, run the command specified in the remediation.
+
+### Remediation:
+Run the following command and follow the prompts to set a password for the root user:
+
+`passwd root`
+
+```php
+root@ubuntu:/# passwd root
+New password: 
+Retype new password: 
+passwd: password updated successfully
+```
+
+Now run the previous command again to ensure compliance with the above recommendation
+
+###### My Output:
+```ruby
+root@ubuntu:/# grep -Eq '^root:\$[0-9]' /etc/shadow || echo "root is locked"
 root@ubuntu:/# 
 ```
-This confirms that a password is set for the root user and is in compliance with the above recommendation.<br ><br >
+This confirms that a password is set for the root user and is now in compliance with the above recommendation. To fix this, I ran the command specified in the remediation.
+<br ><br >
 
 
 
@@ -128,9 +148,8 @@ On physical systems or virtual systems where host based time synchronization is 
 
 ###### My Output:
 ```ruby
-root@ubuntu:/home/vagrant# systemctl is-enabled systemd-timesyncd
+root@ubuntu:/# systemctl is-enabled systemd-timesyncd
 enabled
-root@ubuntu:/home/vagrant# 
 ```
 This confirms that `time synchronization` is in use on my system and complies with the above recommendation.
 
@@ -152,10 +171,9 @@ Run the following commands to verify isc-dhcp-server is not installed:
 
 ###### My Output:
 ```ruby
-root@ubuntu:/home/vagrant# dpkg -s isc-dhcp-server | grep -E '(Status:|not installed)'
+root@ubuntu:/# dpkg -s isc-dhcp-server | grep -E '(Status:|not installed)'
 dpkg-query: package 'isc-dhcp-server' is not installed and no information is available
 Use dpkg --info (= dpkg-deb --info) to examine archive files.
-root@ubuntu:/home/vagrant# 
 ```
 This confirms that `DHCP Server` is not installed on my system and complies with the above recommendation.<br ><br >
 
@@ -212,19 +230,18 @@ Wireless is not enabled
 
 ###### My Output:
 ```ruby
-root@ubuntu:/home/vagrant# nano bash.sh
-root@ubuntu:/home/vagrant# ./bash.sh
+root@ubuntu:/# nano bash.sh
+root@ubuntu:/# ./bash.sh
 bash: ./bash.sh: Permission denied
-root@ubuntu:/home/vagrant# ls -l
+root@ubuntu:/# ls -l
 total 4
 -rw-r--r-- 1 root    root    717 Sep 16 09:28 bash.sh
-root@ubuntu:/home/vagrant# chmod 744 bash.sh
-root@ubuntu:/home/vagrant# ls -l
+root@ubuntu:/# chmod 744 bash.sh
+root@ubuntu:/# ls -l
 total 4
 -rwxr--r-- 1 root    root    717 Sep 16 09:28 bash.sh
-root@ubuntu:/home/vagrant# ./bash.sh
+root@ubuntu:/# ./bash.sh
 Wireless is not enabled
-root@ubuntu:/home/vagrant# 
 ```
 This confirms that no wireless interfaces are active on my system, and complies with the above recommendation.
 
@@ -257,11 +274,10 @@ Run the following command to verify that Uncomplicated Firewall (UFW) is install
 
 ###### My Output:
 ```ruby
-root@ubuntu:/home/vagrant# dpkg -s ufw | grep 'Status: install'
+root@ubuntu:/# dpkg -s ufw | grep 'Status: install'
 Status: install ok installed
-root@ubuntu:/home/vagrant# 
 ```
-This confirms that `ufw is installed` on my system and complies with the above recommendation.<br ><br >
+This confirms that `ufw is installed` on my system and complies with the above recommendation.<br><br>
 
 
 ## 4. LOGGING AND AUDITING
@@ -292,12 +308,11 @@ Run the following command and verify auditd is installed:
 
 ###### My Initial Output:
 ```ruby
-root@ubuntu:/home/vagrant# dpkg -s auditd audispd-plugins
+root@ubuntu:/# dpkg -s auditd audispd-plugins
 dpkg-query: package 'auditd' is not installed and no information is available
 
 dpkg-query: package 'audispd-plugins' is not installed and no information is available
 Use dpkg --info (= dpkg-deb --info) to examine archive files.
-root@ubuntu:/home/vagrant# 
 ```
 
 This shows that `auditd` is not installed and doesn't comply with the above recommendation. To fix, I apply the below remediation:
@@ -308,7 +323,7 @@ Run the following command to Install auditd:
 
 ###### My Command Output:
 ```ruby
-root@ubuntu:/home/vagrant# dpkg -s auditd audispd-plugins
+root@ubuntu:/# dpkg -s auditd audispd-plugins
 dpkg-query: package 'auditd' is not installed and no information is available
 
 dpkg-query: package 'audispd-plugins' is not installed and no information is available
@@ -367,7 +382,7 @@ Processing triggers for systemd (245.4-4ubuntu3.17) ...
 
 ###### My Final Output:
 ```ruby
-root@ubuntu:/home/vagrant# dpkg -s auditd audispd-plugins
+root@ubuntu:/# dpkg -s auditd audispd-plugins
 Package: auditd
 Status: install ok installed
 Priority: optional
@@ -421,10 +436,9 @@ Description: Plugins for the audit event dispatcher
  behavior.
 Homepage: https://people.redhat.com/sgrubb/audit/
 Original-Maintainer: Laurent Bigonville <bigon@debian.org>
-root@ubuntu:/home/vagrant# 
 ```
 
-This confirms that `auditd` is installed on my system and complies with the above recommendation.<br ><br >
+This confirms that `auditd` is now installed on my system and complies with the above recommendation.<br ><br >
 
 
 ### 4.2.2.1 Ensure journald is configured to send logs to rsyslog (Automated)
@@ -448,9 +462,8 @@ Review /etc/systemd/journald.conf and verify that logs are forwarded to syslog w
 
 ###### My Output:
 ```ruby
-root@ubuntu:/home/vagrant# grep -e ForwardToSyslog /etc/systemd/journald.conf
+root@ubuntu:/# grep -e ForwardToSyslog /etc/systemd/journald.conf
 #ForwardToSyslog=yes
-root@ubuntu:/home/vagrant# 
 ```
 This confirms that `journald` is configured to send logs to rsyslog, and in compliance with the above recommendation.
 
@@ -484,12 +497,11 @@ Run the following command to verify cron is enabled:
 
 ###### My Previous Output:
 ```ruby
-root@ubuntu:/home/vagrant# systemctl status cron
+root@ubuntu:/# systemctl status cron
 ● cron.service - Regular background program processing daemon
      Loaded: loaded (/lib/systemd/system/cron.service; enabled; vendor preset: enabled)
      Active: inactive (dead)
        Docs: man:cron(8)
-root@ubuntu:/home/vagrant# 
 ```
 This shows that cron daemon is not enabled and running.
 
@@ -500,11 +512,10 @@ Run the following command to enable and start cron:
 
 ###### My Final Output:
 ```ruby
-root@ubuntu:/home/vagrant# systemctl status cron | grep 'Active: active (running) '
+root@ubuntu:/# systemctl status cron | grep 'Active: active (running) '
      Active: active (running) since Fri 2022-09-16 13:06:41 WAT; 4s ago
-root@ubuntu:/home/vagrant# 
 ```
-This confirms that `cron daemon` is enabled and running and is in compliance with the above recommendation.
+This confirms that `cron daemon` is now enabled and running, and is in compliance with the above recommendation.
 
 
 ### 5.2 Configure sudo
@@ -533,7 +544,7 @@ Run the following command and inspect the output to confirm that sudo is install
 
 ###### My Output:
 ```ruby
-root@ubuntu:/home/vagrant# dpkg -s sudo
+root@ubuntu:/# dpkg -s sudo
 Package: sudo
 Status: install ok installed
 Priority: optional
@@ -557,8 +568,6 @@ Description: Provide limited super user privileges to specific users
  This version is built with minimal shared library dependencies, use the
  sudo-ldap package instead if you need LDAP support for sudoers.
 Homepage: http://www.sudo.ws/
-Original-Maintainer: Bdale Garbee <bdale@gag.com>
-root@ubuntu:/home/vagrant# 
 ```
 This confirms that `sudo` is installed and is in compliance with the above recommendation.
 
@@ -587,7 +596,7 @@ Run the following command and verify Uid and Gid are both `0/root` and Access is
 
 ###### My Output:
 ```ruby
-root@ubuntu:/home/vagrant# stat /etc/passwd
+root@ubuntu:/# stat /etc/passwd
   File: /etc/passwd
   Size: 1368            Blocks: 8          IO Block: 4096   regular file
 Device: 9bh/155d        Inode: 1576395     Links: 1
@@ -596,7 +605,6 @@ Access: 2022-09-16 12:03:52.831211002 +0100
 Modify: 2022-09-16 12:03:47.538559014 +0100
 Change: 2022-09-16 12:03:47.540559014 +0100
  Birth: -
-root@ubuntu:/home/vagrant# 
 ```
 This confirms that permissions on `/etc/passwd` are configured and is in compliance with the above recommendation.
 
@@ -627,8 +635,7 @@ Run the following command and verify that no output is returned:
 
 ###### My Output:
 ```ruby
-root@ubuntu:/home/vagrant# awk -F: '($2 != "x" ) { print $1 " is not set to shadowed passwords "}' /etc/passwd
-root@ubuntu:/home/vagrant#  
+root@ubuntu:/# awk -F: '($2 != "x" ) { print $1 " is not set to shadowed passwords "}' /etc/passwd
 ```
 This confirms that accounts in `/etc/passwd` use shadowed passwords and is in compliance with the above recommendation.
 
