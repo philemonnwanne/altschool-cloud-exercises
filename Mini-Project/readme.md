@@ -88,14 +88,14 @@ Create a directory to house your project, for the purpose of this project I will
 mkdir mini-project
 ```
 
-Switch to your projects directory (in my case I named it `mini-project`) and clone the [laravel project](https://github.com/f1amy/laravel-realworld-example-app.git) from github here
+Switch to your projects directory `in my case I named it (mini-project)` and clone the [laravel project](https://github.com/f1amy/laravel-realworld-example-app.git) from github
 
 ```php
 cd mini-project
 git clone https://github.com/f1amy/laravel-realworld-example-app.git
 ```
 
-Rename the cloned git repo to whatever you wish to name your project, for my use case I will name it `laravel`
+Rename the cloned git repo to whatever you wish to call your project, for my use case I will name it `laravel`
 ```php
 mv laravel-realworld-example-app laravel
 ```
@@ -115,7 +115,7 @@ cp .env.example .env
 
 > This will create a copy of the `.env.example` file in your project and name the copy simply `.env`
 
-Next, change the permission and ownership of `/mini-project` and `laravel` directory. In order to run, Apache needs certain permissions over the Laravel directory we made. We must first give our web group control of the Laravel directory. You can read more on [Linux file permissions here](https://en.wikipedia.org/wiki/File-system_permissions)
+Next, change the permission and ownership of `mini-project` and `laravel` directory. In order to run, Apache needs certain permissions over the Laravel directory we made. We must first give our web group control of the Laravel directory. You can read more on [Linux file permissions here](https://en.wikipedia.org/wiki/File-system_permissions)
 ```php
 chown -R www-data:www-data /var/www/mini-project/laravel
 chmod -R 775 /var/www/mini-project/laravel
