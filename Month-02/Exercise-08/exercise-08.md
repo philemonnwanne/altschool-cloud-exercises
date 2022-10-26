@@ -52,12 +52,12 @@ vagrant@local:/etc/ansible$ ansible-inventory inventory.yaml --list
 }
 ```
 
-**Pinged the managed node in your inventory using** 
+**Ping the managed node in your inventory using** 
 ```yaml
 ansible virtualmachines -m ping -i inventory.yaml
 ```
 
-**Output Below:**
+Output Below
 ```ruby
 vagrant@local:~$ ansible servers -m ping -i inventory.yaml
 amazon-server | SUCCESS => {
@@ -69,14 +69,14 @@ amazon-server | SUCCESS => {
 }
 ```
 
-Perfom a dry run by issuing the command 
+**Perfom a dry run by issuing the command**
 ```yaml
 ansible-playbook playbook.yaml --check
 ```
 
 > Note:  This is used when creating or editing a playbook or role to know what it will do. In check mode, Ansible runs without making any changes on remote systems. Modules that support check mode report the changes they would have made and modules that do not support check mode report nothing and do nothing.
 
-**Output Here:**
+Output Below
 ```ruby
 vagrant@local:~$ ansible-playbook -i inventory.yaml playbook.yaml --check
 
@@ -113,7 +113,8 @@ Finally to get ansible to run plays in the playbook on the managed node use the 
 ```ruby
 vagrant@local:~$ ansible-playbook -i inventory.yaml playbook.yaml
 ```
-**Output Here:**
+
+Output Below
 ```ruby
 vagrant@local:~$ ansible-playbook -i inventory playbook.yml --check
 
