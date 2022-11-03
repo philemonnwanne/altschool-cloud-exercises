@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+
+# NOTE: Disable any package you don't need by adding a '#' sign in front
+
+# UPDATE PACKAGE INDEX
+# sudo apt update && 
+# echo "Local package index update complete!" && 
+# echo "Proceeding to install packages" &&
+    # # INSTALL NANO NO PROMPTS 
+    # sudo apt install -y nano && 
+    # echo "NANO installed succesfully" &&
+    # # INSTALL NET-TOOLS NO PROMPTS 
+    # sudo apt install -y net-tools && 
+    # echo "NET-TOOLS installed succesfully" &&
+    # INSTALL CRON NO PROMPTS 
+    # sudo apt install cron && echo "CRON installed succesfully"
+    # INSTALL PING NO PROMPTS 
+    # sudo apt install -y iputils-ping && /
+    # SOFTWARE-PROPERTIES-COMMON NO PROMPTS
+    # sudo apt install -y software-properties-common && 
+    # echo "SOFTWARE-PROPERTIES-COMMON installed succesfully" &&
+    # CONFIGURE ANSIBLE PPA
+    # sudo add-apt-repository --yes --update ppa:ansible/ansible && 
+    # echo "ANSIBLE PPA configured" &&
+    # INSTALL ANSIBLE NO PROMPTS
+    # sudo apt install -y ansible
+    # echo "ANSIBLE installed succesfully"
+    # # INSTALL SSMTP NO PROMPTS 
+    # sudo apt install ssmtp -y && echo "SSMTP installed succesfully"
+    # # INSTALL BSD-MAILX NO PROMPTS 
+    # sudo apt install mutt -y && echo "MUTT succesfully"

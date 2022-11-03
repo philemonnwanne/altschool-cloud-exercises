@@ -1,0 +1,56 @@
+---
+- name: deploy apache2 on host server[remote]
+  hosts: all
+  become: true # Perform all the Ansible playbook tasks as another user.
+  become_user: root # Default username to be used by Ansible
+  tasks:
+    - name: Update "apt" repository
+      ansible.builtin.apt:
+        update_cache: yes # Run the equivalent of apt update before the operation
+        autoclean: yes # Remove useless packages from the cache
+        autoremove: yes
+
+    - name: Install (git, apache2 unzip, curl)
+      ansible.builtin.command: apt install -y git apache2 unzip curl
+
+    - name: Install software-properties-common
+      ansible.builtin.command: apt install -y software-properties-common
+
+    - name: Add the apt-repository ppa:ondrej/php
+      ansible.builtin.apt_repository: 
+         repo: ppa:ondrej/php 
+
+    - name: Update "apt"
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: ensure pexpect is installed in the playbook python
+      pip:
+        name: pexpect
+        state: present
+
+    - name: Install php 8.1 on Ubuntu 20.04
+      ansible.builtin.expect:
+        command: apt install php8.1
+        responses:
+          Questions:
+            - Y
+
+    - name: Update "apt"
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Install PHP 8.1 and it's libraries
+      ansible.builtin.command: apt install php8.1-common php8.1-mysql php8.1-xml php8.1-xmlrpc php8.1-curl php8.1-gd php8.1-imagick php8.1-cli php8.1-dev php8.1-imap php8.1-mbstring php8.1-opcache php8.1-soap php8.1-zip php8.1-redis php8.1-intl -y
+
+    - name: Update "apt"
+      ansible.builtin.apt:
+        update_cache: yes
+    
+    - name: Add mySQL Dev apt repository
+      ansible.builtin.get_url:
+        url: https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb
+
+    - name: Update "apt"
+      ansible.builtin.apt:
+        update_cache: yes

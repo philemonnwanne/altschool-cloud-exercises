@@ -1,0 +1,19 @@
+#!/usr/bin/expect -f
+
+set timeout 3
+
+spawn ./questions
+
+expect \"Hello, who are you?\"
+
+send -- "I am Adamr\"
+
+expect "Can I ask you some questions?\"
+
+send -- "Sure\r\"
+
+expect "What is your favorite topic?\"
+
+send -- "Technology\r\"
+
+expect eof

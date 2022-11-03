@@ -1,0 +1,216 @@
+---
+- name: deploy apache2 on host server[remote]
+  hosts: all
+  become: true # Perform all the Ansible playbook tasks as another user.
+  become_user: root # Default username to be used by Ansible
+  vars_files:
+    - vars/config
+  
+# MySQL Configuration
+  roles:
+    - role: geerlingguy.mysql
+      become: yes
+
+  tasks:
+    - name: Update "apt" repository
+      apt:
+        update_cache: yes # Run the equivalent of apt update before the operation
+        autoclean: yes # Remove useless packages from the cache
+        autoremove: yes
+
+    - name: Install (git, apache2 unzip, curl)
+      apt:
+        pkg:
+        - git
+        - apache2
+        - unzip
+        - curl
+
+    - name: Install (lsb-release apt-transport-https ca-certificates)
+      apt:
+        pkg:
+        - lsb-release
+        - apt-transport-https
+        - ca-certificates
+
+    - name: Add the SURY PPA for PHP 8.1
+      command: wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+     
+    - name: Add the PPA to the server packages
+      shell: echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
+
+    - name: Update "apt"
+      apt:
+        update_cache: yes
+        autoclean: yes # Remove useless packages from the cache
+
+    - name: Install PHP 8.1 and it's libraries
+      apt:
+        pkg:
+        - php8.1
+        - libapache2-mod-php
+        - php8.1-mysql
+        - php8.1-common
+        - php8.1-mysql
+        - php8.1-xml
+        - php8.1-xmlrpc
+        - php8.1-curl
+        - php8.1-gd
+        - php8.1-imagick
+        - php8.1-cli
+        - php8.1-dev
+        - php8.1-imap
+        - php8.1-mbstring
+        - php8.1-opcache
+        - php8.1-soap
+        - php8.1-zip
+        - php8.1-intl
+
+    - name: Update "apt"
+      apt:
+        update_cache: yes
+        autoclean: yes # Remove useless packages from the cache
+
+# UFW Configuration
+    - name: "UFW - Allow HTTP on port {{ http_port }}"
+      ufw:
+        rule: allow
+        port: "{{ http_port }}"
+        proto: tcp
+
+    - name: "UFW - Allow HTTPS on port {{ https_port }}"
+      ufw:
+        rule: allow
+        port: "{{ https_port }}"
+        proto: tcp
+      
+    - name: "UFW - Allow SSH on port {{ ssh_port }}"
+      ufw:
+        rule: allow
+        port: "{{ ssh_port }}"
+        proto: tcp
+
+    - name: "UFW - Allow MySQL on port {{ mysql_port }}"
+      ufw:
+        rule: allow
+        port: "{{ mysql_port }}"
+        proto: tcp
+
+
+    - name: Change the working directory to /var/www/ and create alschool directory
+      command: mkdir exam
+      args:
+        chdir: /var/www/
+        creates: exam
+    
+    - name: Clone the project repo into a new directory
+      git:
+        repo: https://github.com/f1amy/laravel-realworld-example-app.git
+        dest: /var/www/exam/laravel
+        clone: yes
+        update: no
+
+    - name: Transfer the web.php file in the routes directory
+      ansible.builtin.copy:
+        src: /home/vagrant/web.php
+        dest: /var/www/exam/laravel/routes/web.php
+
+    - name: Create and edit the .env file
+      ansible.builtin.copy:
+        src: /var/www/exam/laravel/.env.example 
+        dest: /var/www/exam/laravel/.env
+        remote_src: yes
+
+    #
+     # The Configure your .env file just as it is in the output below, only make #changes to the DB_DATABASE and DB_PASSWORD lines
+    #
+    
+    - name: Change the project directory and install Composer
+      ansible.builtin.shell: curl -sS https://getcomposer.org/installer | php
+      args:
+        chdir: /var/www/exam/laravel
+    
+    - name: Move the downloaded php binary to the system path
+      ansible.builtin.command: mv composer.phar /usr/local/bin/composer
+      args:
+        chdir: /var/www/exam/laravel
+        
+    - name: Make composer executable by user and group
+      ansible.builtin.file:
+        path: /usr/local/bin/composer
+        mode: u+x,g+x,o-x
+
+    - name: Change file ownership, group and permissions
+      ansible.builtin.file:
+        path: /var/www/exam/laravel
+        state: directory
+        recurse: yes
+        owner: vagrant
+        group: vagrant
+        mode: '775'
+
+# New play to facilitate composer install
+- name: Assume a none-root user for composer install
+  hosts: all
+  remote_user: vagrant
+  tasks:
+    - name: Download and installs all composer libs and dependencies outlined in the /var/www/exam/laravel/composer.lock
+      composer:
+        command: install
+        working_dir: /var/www/exam/laravel
+      
+# New play to continue other tasks
+- name: Assume a root user for composer install
+  hosts: all
+  remote_user: root
+  tasks:      
+    - name: Run the php artisan key:generate command 
+      ansible.builtin.shell: php artisan key:generate
+      args:
+        chdir: /var/www/exam/laravel
+
+    - name: Run the php artisan config:cache command 
+      ansible.builtin.shell: php artisan config:cache
+      args:
+        chdir: /var/www/exam/laravel
+
+    - name: Run the php artisan migrate:fresh command 
+      ansible.builtin.shell: php artisan migrate:fresh
+      args:
+        chdir: /var/www/exam/laravel
+
+    - name: Run the php artisan migrate --seed command 
+      ansible.builtin.shell: php artisan migrate --seed
+      args:
+        chdir: /var/www/exam/laravel
+
+    - name: Create an apache virtual host configuration file
+      ansible.builtin.copy:
+        src: /home/vagrant/exam.conf
+        dest: /etc/apache2/sites-available/exam.conf
+
+    - name: Enable a2enmod rewrite
+      ansible.builtin.command: a2enmod rewrite
+
+    - name: Disable default apache page and enable laravel page
+      ansible.builtin.command: a2dissite 000-default.conf
+
+    - name: Enable laravel page
+      ansible.builtin.command: a2ensite exam.conf
+
+    - name: Change file ownership, group and permissions
+      ansible.builtin.file:
+        path: /var/www/exam/laravel
+        state: directory
+        recurse: yes
+        owner: www-data
+        group: www-data
+        mode: '775'
+
+    - name: Restart apache web server
+      ansible.builtin.command: systemctl restart apache2
+
+
+
+
+
