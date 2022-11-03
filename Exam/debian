@@ -160,7 +160,7 @@
         working_dir: /var/www/exam/laravel
       
 # New play to continue other tasks
-- name: Assume a root user for composer install
+- name: Assume a root user for remaining tasks
   hosts: all
   remote_user: root
   tasks:      
