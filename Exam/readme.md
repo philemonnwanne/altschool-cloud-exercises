@@ -2,3 +2,5 @@
 
 # [altschool](https://altschoolafrica.com)-cloud-exercises
 This is private repo for documenting all my AltSchool first semester exam/project
+
+> We will use ansible roles for the deployment 
