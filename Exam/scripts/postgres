@@ -31,10 +31,3 @@ echo -e 'local\tall\t\tdemo\t\t\t\tmd5' >>/etc/postgresql/15/main/pg_hba.conf
 # Restart the PostgreSQL daemon
 systemctl restart postgresql
 
-
-
-# expect \"Remove anonymous users?\"
-# send \"y\r\"
-
-# expect \"Disallow root login remotely?\"
-# send \"y\r\"
