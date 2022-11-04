@@ -1,0 +1,16 @@
+mysql_root_password: "1234"
+mysql_root_user: "root"
+app_user: "philemonnwanne"
+http_host: "philemonnwanne.me"
+http_conf: "exam.conf"
+http_port: "80"
+https_port: "443"
+ssh_port: "22"
+mysql_port: "3306"
+mysql_databases:
+  - name: examdb
+mysql_users:
+  - name: philemonnwanne
+    host: "%"
+    password: 1234
+    priv: "examdb.*:ALL"
