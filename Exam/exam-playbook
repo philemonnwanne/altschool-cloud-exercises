@@ -15,7 +15,7 @@
         autoclean: yes # Remove useless packages from the cache
         autoremove: yes
 
-    - name: Install (git, apache2 unzip, curl)
+    - name: Install (git, apache2 unzip, curl, ufw)
       apt:
         pkg:
         - git
