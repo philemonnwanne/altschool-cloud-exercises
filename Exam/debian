@@ -1,6 +1,6 @@
 ---
-- name: deploy apache2 on host server[remote]
-  hosts: all
+- name: Deploy Laravel and Set up Postgresql
+  hosts: [exam-server]
   become: yes # Perform all the Ansible playbook tasks as another user.
   become_user: root # Default username to be used by Ansible
   vars_files:
