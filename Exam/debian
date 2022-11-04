@@ -1,20 +1,17 @@
 ---
 - name: deploy apache2 on host server[remote]
   hosts: all
-  become: true # Perform all the Ansible playbook tasks as another user.
+  become: yes # Perform all the Ansible playbook tasks as another user.
   become_user: root # Default username to be used by Ansible
   vars_files:
-    - vars/config
-  
-# MySQL Configuration
+    - vars/main.yml
   roles:
-    - role: geerlingguy.mysql
-      become: yes
+    - { role: geerlingguy.mysql }
 
   tasks:
     - name: Update "apt" repository
       apt:
-        update_cache: yes # Run the equivalent of apt update before the operation
+        update_cache: yes # Run the equivalent of apt update
         autoclean: yes # Remove useless packages from the cache
         autoremove: yes
 
@@ -25,6 +22,7 @@
         - apache2
         - unzip
         - curl
+        - ufw
 
     - name: Install (lsb-release apt-transport-https ca-certificates)
       apt:
@@ -96,7 +94,6 @@
         port: "{{ mysql_port }}"
         proto: tcp
 
-
     - name: Change the working directory to /var/www/ and create alschool directory
       command: mkdir exam
       args:
@@ -110,10 +107,15 @@
         clone: yes
         update: no
 
-    - name: Transfer the web.php file in the routes directory
+    - name: Create the web.php file in the routes directory
       ansible.builtin.copy:
-        src: /home/vagrant/web.php
         dest: /var/www/exam/laravel/routes/web.php
+        content: |
+          <?php
+
+          Route::get('/', function () {
+              return view('welcome');
+          });
 
     - name: Create and edit the .env file
       ansible.builtin.copy:
@@ -121,9 +123,10 @@
         dest: /var/www/exam/laravel/.env
         remote_src: yes
 
-    #
-     # The Configure your .env file just as it is in the output below, only make #changes to the DB_DATABASE and DB_PASSWORD lines
-    #
+    - name: Run a script
+      ansible.builtin.script: /home/vagrant/mod_env.sh
+      args:
+        chdir: /home/admin
     
     - name: Change the project directory and install Composer
       ansible.builtin.shell: curl -sS https://getcomposer.org/installer | php
@@ -135,35 +138,16 @@
       args:
         chdir: /var/www/exam/laravel
         
-    - name: Make composer executable by user and group
+    - name: Make composer executable by user
       ansible.builtin.file:
         path: /usr/local/bin/composer
-        mode: u+x,g+x,o-x
+        mode: '755'
 
-    - name: Change file ownership, group and permissions
-      ansible.builtin.file:
-        path: /var/www/exam/laravel
-        state: directory
-        recurse: yes
-        owner: vagrant
-        group: vagrant
-        mode: '775'
-
-# New play to facilitate composer install
-- name: Assume a none-root user for composer install
-  hosts: all
-  remote_user: vagrant
-  tasks:
-    - name: Download and installs all composer libs and dependencies outlined in the /var/www/exam/laravel/composer.lock
-      composer:
-        command: install
-        working_dir: /var/www/exam/laravel
+    - name: Install Composer
+      ansible.builtin.command: composer install -n
+      args:
+        chdir: /var/www/exam/laravel
       
-# New play to continue other tasks
-- name: Assume a root user for remaining tasks
-  hosts: all
-  remote_user: root
-  tasks:      
     - name: Run the php artisan key:generate command 
       ansible.builtin.shell: php artisan key:generate
       args:
@@ -186,8 +170,21 @@
 
     - name: Create an apache virtual host configuration file
       ansible.builtin.copy:
-        src: /home/vagrant/exam.conf
         dest: /etc/apache2/sites-available/exam.conf
+        content: |
+          <VirtualHost *:80>
+              ServerAdmin admin@philemonnwanne.me
+              ServerName philemonnwanne.me
+              ServerAlias www.philemonnwanne.me
+              DocumentRoot /var/www/exam/laravel/public
+    
+              <Directory /var/www/exam/laravel/public>
+                  AllowOverride All
+              </Directory>
+    
+              ErrorLog ${APACHE_LOG_DIR}/error.log
+              CustomLog ${APACHE_LOG_DIR}/access.log combined
+          </VirtualHost>
 
     - name: Enable a2enmod rewrite
       ansible.builtin.command: a2enmod rewrite
