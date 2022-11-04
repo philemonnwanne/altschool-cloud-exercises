@@ -238,7 +238,7 @@
         creates: certbot
 
     - name: Requesting SSL Certificate
-      shell: sudo certbot --apache --agree-tos --redirect -m nwanne63@@gmail.com --non-interactive -d philemonnwanne.me -d www.philemonnwanne.me
+      shell: sudo certbot --apache --agree-tos --redirect -m nwanne63@gmail.com --non-interactive -d philemonnwanne.me -d www.philemonnwanne.me
 
 
 
