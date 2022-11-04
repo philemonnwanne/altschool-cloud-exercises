@@ -45,9 +45,8 @@
     - name: Install PHP 8.1 and it's libraries
       apt:
         pkg:
-        - php8.1
+        - php8
         - libapache2-mod-php
-        - php8.1-mysql
         - php8.1-common
         - php8.1-mysql
         - php8.1-xml
@@ -94,7 +93,7 @@
         port: "{{ mysql_port }}"
         proto: tcp
 
-    - name: Change the working directory to /var/www/ and create alschool directory
+    - name: Change the working directory to /var/www/ and create exam directory
       command: mkdir exam
       args:
         chdir: /var/www/
@@ -123,7 +122,7 @@
         dest: /var/www/exam/laravel/.env
         remote_src: yes
 
-    - name: Run a script
+    - name: My script to modify .env
       ansible.builtin.script: /home/vagrant/mod_env.sh
       args:
         chdir: /home/admin
@@ -133,7 +132,7 @@
       args:
         chdir: /var/www/exam/laravel
     
-    - name: Move the downloaded php binary to the system path
+    - name: Move the downloaded composer binary to the system path
       ansible.builtin.command: mv composer.phar /usr/local/bin/composer
       args:
         chdir: /var/www/exam/laravel
@@ -206,6 +205,15 @@
 
     - name: Restart apache web server
       ansible.builtin.command: systemctl restart apache2
+
+    - name: set timezone to Africa/Lagos
+      timezone:
+        name: Africa/Lagos
+
+    - name: Script to install PostgreSQL
+      ansible.builtin.script: /home/vagrant/postgres.sh
+      args:
+        chdir: /home/admin
 
 
 
