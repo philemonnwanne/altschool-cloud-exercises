@@ -45,7 +45,7 @@
     - name: Install PHP 8.1 and it's libraries
       apt:
         pkg:
-        - php8
+        - php8.1
         - libapache2-mod-php
         - php8.1-common
         - php8.1-mysql
@@ -233,9 +233,12 @@
 
     - name: Configuring certbot
       shell: sudo ln -s /snap/bin/certbot /usr/bin/certbot
+      args:
+        chdir: /usr/bin/
+        creates: certbot
 
     - name: Requesting SSL Certificate
-      shell: sudo certbot --apache --agree-tos --redirect -m nwanne63@@gmail.com -d philemonnwanne.me -d www.philemonnwanne.me
+      shell: sudo certbot --apache --agree-tos --redirect -m nwanne63@@gmail.com --non-interactive -d philemonnwanne.me -d www.philemonnwanne.me
 
 
 
