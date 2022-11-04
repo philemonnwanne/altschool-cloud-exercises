@@ -33,26 +33,6 @@ systemctl restart postgresql
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-# expect \"Enter name of role to add:\"
-# send \"$MYSQL_USER_NAME\r\"
-
-# Enter name of role to add:
-# expect \"Shall the new role be a superuser?\ (y/n)\"
-# send \"y\r\"
-
-
 # expect \"Remove anonymous users?\"
 # send \"y\r\"
 
