@@ -6,3 +6,5 @@ This is private repo for documenting all my altschool first semester exam/projec
 > We will use an ansible playbook for the deployment 
 
 To avoid my project being totally dependent on `ansible` I made a few modifications of my own
+
+Also to avoid exposure of data and private info, I have
