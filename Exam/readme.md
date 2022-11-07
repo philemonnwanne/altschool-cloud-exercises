@@ -2,9 +2,8 @@
 
 # [altschool](https://altschoolafrica.com)-semester-01-exam
 
-This is private repo for documenting all my altschool first semester exam/project
 
-To avoid my project being totally dependent on `ansible` I made a few modifications of my own (by creating custom scripts). Also to avoid exposure of data and private info, I made sure to encrypt my credentials using `ansible-vault` which would require a password for one to decrpyt the contents of that file.
+To avoid my project being totally dependent on `ansible` I made a few modifications of my own (by creating custom scripts). Also to avoid exposure of data and private info, I made sure to encrypt my credentials using `ansible-vault` which would require a password for one to decrpyt the contents of such files.
 
 ### NETWORK DIAGRAM
 ![my-logical-network](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Exam/img/logical-network.jpg)
@@ -12,7 +11,7 @@ To avoid my project being totally dependent on `ansible` I made a few modificati
 
 ### AWS CLOUD CREDENTIALS
 
-[Click here to connect any of the users below to my aws console](https://philemonnwanne.signin.aws.amazon.com/console)
+Click [here](https://philemonnwanne.signin.aws.amazon.com/console) to connect any of the users below to my aws console
 
 **Password:** ADMIN@altschool2022
 
