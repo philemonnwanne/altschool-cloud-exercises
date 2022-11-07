@@ -1,5 +1,11 @@
-[exam-server]
-3.95.132.58
-[exam-server:vars]
+[debian]
+**.**.**.**
+[debian:vars]
 ansible_user=admin
-ansible_ssh_private_key_file=/home/vagrant/mini.pem
+ansible_ssh_private_key_file=/vagrant/exam.pem
+
+[ubuntu]
+**.**.**.**
+[ubuntu:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/vagrant/exam.pem
