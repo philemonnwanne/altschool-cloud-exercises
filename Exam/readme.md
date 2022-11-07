@@ -8,3 +8,18 @@ This is private repo for documenting all my altschool first semester exam/projec
 To avoid my project being totally dependent on `ansible` I made a few modifications of my own
 
 Also to avoid exposure of data and private info, I have
+
+
+### AWS SignIn Info
+
+[CLOUD CREDENTIALS LINK](https://philemonnwanne.signin.aws.amazon.com/console)
+
+**Password:** ADMIN@altschool2022
+
+**Users:**
+- Kunrad
+- Valentine
+- Jerry
+
+**Group:**
+- altschool-admin
