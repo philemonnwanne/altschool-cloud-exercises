@@ -1,9 +1,9 @@
 ---
-- name: Deploy Laravel and Set up Postgresql
+- name: A playbook Deploy Laravel and Set up Postgresql on a Debian 11 server
   hosts: [debian]
   become: yes # Perform all the Ansible playbook tasks as another user.
   become_user: root # Default username to be used by Ansible
-  vars_files:
+  vars_files: # Contains all my secrets
     - vars/main.yml
   roles:
     - { role: geerlingguy.mysql }
@@ -39,9 +39,10 @@
 
     - name: Update "apt"
       apt:
-        update_cache: yes
+        update_cache: yes # Run the equivalent of apt update
         autoclean: yes # Remove useless packages from the cache
 
+# Install php and php extensions
     - name: Install PHP 8.1 and it's libraries
       apt:
         pkg:
@@ -65,10 +66,10 @@
 
     - name: Update "apt"
       apt:
-        update_cache: yes
+        update_cache: yes # Run the equivalent of apt update
         autoclean: yes # Remove useless packages from the cache
 
-# UFW Configuration
+# UFW Rules
     - name: "UFW - Allow HTTP on port {{ http_port }}"
       ufw:
         rule: allow
@@ -93,6 +94,7 @@
         port: "{{ mysql_port }}"
         proto: tcp
 
+# Create project directory and clone repository
     - name: Change the working directory to /var/www/ and create exam directory
       command: mkdir exam
       args:
@@ -116,6 +118,7 @@
               return view('welcome');
           });
 
+# My custom script to modify the .env file
     - name: Create and edit the .env file
       ansible.builtin.copy:
         src: /var/www/exam/laravel/.env.example 
@@ -142,6 +145,7 @@
         path: /usr/local/bin/composer
         mode: '755'
 
+# Install composer dependencies
     - name: Install Composer
       ansible.builtin.command: composer install -n
       args:
@@ -167,6 +171,7 @@
       args:
         chdir: /var/www/exam/laravel
 
+# Create Virtual Host File
     - name: Create an apache virtual host configuration file
       ansible.builtin.copy:
         dest: /etc/apache2/sites-available/exam.conf
@@ -185,6 +190,7 @@
               CustomLog ${APACHE_LOG_DIR}/access.log combined
           </VirtualHost>
 
+# Disable default apache page and enable laravel page
     - name: Enable a2enmod rewrite
       ansible.builtin.command: a2enmod rewrite
 
@@ -215,6 +221,7 @@
       args:
         chdir: /home/admin
 
+# Obtain SSL certificate
     - name: Installing snapd
       apt:
         name: snapd
@@ -239,6 +246,4 @@
 
     - name: Requesting SSL Certificate
       shell: sudo certbot --apache --agree-tos --redirect -m nwanne63@gmail.com --non-interactive -d philemonnwanne.me -d www.philemonnwanne.me
-
-
 
