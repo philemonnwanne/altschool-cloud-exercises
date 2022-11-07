@@ -1,6 +1,6 @@
 ---
 - name: Deploy Laravel and Set up Postgresql
-  hosts: [debian-server]
+  hosts: [debian]
   become: yes # Perform all the Ansible playbook tasks as another user.
   become_user: root # Default username to be used by Ansible
   vars_files:
