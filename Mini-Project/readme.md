@@ -95,7 +95,7 @@ apt install ./mysql-apt-config_0.8.22-1_all.deb
 <span>Confirm addition of mySQL 8.0 repository as default when prompted</span>
 
 
-![mysql-prompt-image](/mini-project/img/mysql-prompt.png)
+![mysql-prompt-image](/Mini-Project/images/mysql-prompt.png)
 
 Use the down arrow key to choose OK, then press `Tab` and hit `Enter` (as shown in the image above) - Would be done twice
 
@@ -118,7 +118,7 @@ service mysql status
 The output should show that the service is enabled and running
 
 
-### 5. Create a Database
+### Create a Database
 Login to mySQL  by executing the following command into mySQL:
 ```
 mysql -u root -p
