@@ -329,7 +329,7 @@ systemctl reload apache2
 ### Access Laravel
 Now, open your web browser and access the Laravel site by visiting your domain. You will be redirected to the Laravel default page
 
-#### rendered page
+### rendered page
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="/Mini-Project/images/mini-proj-dark.png">
