@@ -201,7 +201,7 @@ Next, edit the `.env` file and define your database:
 nano .env
 ```
 
-`Note`: Configure your `.env` file just as it is in the output below, only make changes to the `DB_DATABASE` and `DB_PASSWORD` lines
+`Note:` Configure your `.env` file just as it is in the output below, only make changes to the `DB_DATABASE` and `DB_PASSWORD` lines
 
 ```php
 APP_NAME="your app name" (call it anything you wish)
@@ -259,7 +259,7 @@ composer install
 
 
 Generate the artisan key with the following command 
-> make sure you are in the `/var/www/altschool/laravel` directory before executing any command that starts with `php artisan`
+> make sure you are in the `/var/www/mini-project/laravel` directory before executing any command that starts with `php artisan`
 
 Switch to your projects directory
 ```php
