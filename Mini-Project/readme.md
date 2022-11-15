@@ -332,16 +332,16 @@ Now, open your web browser and access the Laravel site by visiting your domain. 
 #### rendered page
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/mini-project/img/mini-proj-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="/mini-project/img/mini-proj.png">
-  <img alt="Shows the rendered page in light mode and in dark mode." src="/mini-project/img/mini-proj.png">
+  <source media="(prefers-color-scheme: dark)" srcset="/Mini-Project/images/mini-proj-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="/Mini-Project/images/mini-proj.png">
+  <img alt="Shows the rendered page in light mode and in dark mode." src="/Mini-Project/images/mini-proj.png">
 </picture>
 
 
 Note: Run the following commands to test that all endpoints are working as they should
 
 ```php
-cd /var/www/altschool/laravel
+cd /var/www/mini-project/laravel
 php artisan route:list
 ```
 
@@ -349,9 +349,9 @@ This will return a list of all the possible endpoints in the project and you can
 
 ### apis/endpoints
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/mini-project/img/endpoints-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="/mini-project/img/endpoints.png">
-  <img alt="Shows the endpoints in light mode and in dark mode." src="/mini-project/img/endpoints.png">
+  <source media="(prefers-color-scheme: dark)" srcset="/Mini-Project/images/endpoints-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="/Mini-Project/images/endpoints.png">
+  <img alt="Shows the endpoints in light mode and in dark mode." src="/Mini-Project/images/endpoints.png">
 </picture>
 
 ### Encrypt your domain and make 
