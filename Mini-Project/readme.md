@@ -29,20 +29,18 @@ We will be using the Apt installer to install new packages onto our server. Befo
 To do so, we can use the following command:
 
 ```php
+sudo su
 apt update
 ```
 
 Once the update is done we can go to the next step
 
-### Install the following packages (Apache2, Wget, Git, Curl)
+### Install the following packages (Apache2, Wget, Git, Curl, unzip)
 
 Now that our installer is up to date, we can now install our web server Apache and the following packages on the server. This will install the Apache webserver package and start the Apache web service automatically
 
 ```php
-apt install -y wget \ 
-git \
-apache2 \
-curl
+apt install -y wget git apache2 curl unzip
 ```
 
 > Note: The `-y` is to answer yes to all prompts
@@ -76,6 +74,64 @@ php -v
 ```
 
 
+### Install mySQL
+
+The next step is to install our database server on our virtual machine. Follow steps below to Install mySQL 8.0 on your Debian 11 Linux system
+
+Add mySQL Dev apt repository. MySQL 8.0 packages are available on official mySQL Dev apt repository
+```
+apt update
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb
+```
+
+> Note: If you get any error in this next 👇🏾 step, keep retrying the command until it's all good -- could be network issues 
+
+Install the release package
+```
+apt update
+apt install ./mysql-apt-config_0.8.22-1_all.deb
+```
+
+<span>Confirm addition of mySQL 8.0 repository as default when prompted</span>
+
+
+![mysql-prompt-image](/mini-project/img/mysql-prompt.png)
+
+Use the down arrow key to choose OK, then press `Tab` and hit `Enter` (as shown in the image above) - Would be done twice
+
+> Note: If you get any error in this next 👇🏾 step, keep retrying the command until it's all good -- could be network issues 
+
+Now you can install mySQL
+```
+apt update
+apt install mysql-server
+```
+<samp>When prompted, enter your root password and choose legacy authentication</samp>
+
+we can now exit mySQL using the command `exit;`
+
+To verify that the mySQL server is running, type:
+```
+service mysql status
+```
+
+The output should show that the service is enabled and running
+
+
+### 5. Create a Database
+Login to mySQL  by executing the following command into mySQL:
+```
+mysql -u root -p
+```
+
+Replace the “your password” with the password you had set up during installation. Once we are logged in, we can now create a database using the following command:
+
+```
+CREATE DATABASE yourdatabase;
+```
+> replace `yourdatabase` with your desired database name. Once the database has been created, we can now exit mySQL using the command `exit;`. Also remember to add the semi-colons.
+
+
 ### Install Laravel 8 Using Composer 
 
 Switch to apache's document root
@@ -100,14 +156,39 @@ Rename the cloned git repo to whatever you wish to call your project, for my use
 mv laravel-realworld-example-app laravel
 ```
 
-Switch to your projects directory
+Run the following command to edit the `web.php` file in the routes directory
+```
+nano /var/www/mini-project/laravel/routes/web.php
+```
+
+The code block that we want to alter in the file should look similar to what we have below
+
 ```php
-cd laravel 
+<?php
+
+/*Route::get('/', function () {
+    return view('welcome');
+});*/
+```
+
+When you are done editing the file it should now look like this 👇🏾
+
+```php
+<?php
+
+Route::get('/', function () {
+    return view('welcome');
+});
 ```
 
 ### Create a copy of your `.env` file
 
 `.env` files are not generally committed to source control for security reasons. But there is a `.env.example` which is a template of the `.env` file that the project expects us to have. So we will make a copy of the `.env.example` file and create a `.env` file that we can start to fill out to do things like database configuration in the next few steps.
+
+Switch to your projects directory
+```php
+cd /var/www/mini-project/laravel 
+```
 
 ```php
 cp .env.example .env
@@ -115,13 +196,25 @@ cp .env.example .env
 
 > This will create a copy of the `.env.example` file in your project and name the copy simply `.env`
 
-Next, change the permission and ownership of `mini-project` and `laravel` directory. In order to run, Apache needs certain permissions over the Laravel directory we made. We must first give our web group control of the Laravel directory. You can read more on [Linux file permissions here](https://en.wikipedia.org/wiki/File-system_permissions)
-```php
-chown -R www-data:www-data /var/www/mini-project/laravel
-chmod -R 775 /var/www/mini-project/laravel
-chmod -R 775 /var/www/mini-project/laravel/storage
-chmod -R 775 /var/www/mini-project/laravel/bootstrap/cache
+Next, edit the `.env` file and define your database:
 ```
+nano .env
+```
+
+`Note`: Configure your `.env` file just as it is in the output below, only make changes to the `DB_DATABASE` and `DB_PASSWORD` lines
+
+```php
+APP_NAME="your app name" (call it anything you wish)
+APP_URL=your machine's IP addr eg. (192.168.10.22)
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=enter the name of your database here
+DB_USERNAME=root
+DB_PASSWORD=enter your mysql root password here
+```
+After updating your .env file, save the changes and exit
+
 
 ### Install Composer
 
@@ -164,10 +257,26 @@ Whenever you clone a new Laravel project you must now install all of the project
 composer install
 ```
 
-generate the artisan key with the following command
+
+Generate the artisan key with the following command 
+> make sure you are in the `/var/www/altschool/laravel` directory before executing any command that starts with `php artisan`
+
+Switch to your projects directory
+```php
+cd /var/www/mini-project/laravel 
+```
+
 ```php
 php artisan key:generate
 ```
+
+Also run the following php artisan commands
+```
+php artisan config:cache
+php artisan migrate:fresh
+php artisan migrate --seed
+```
+
 
 ### Configure Apache to Host Laravel 8
 
@@ -186,7 +295,7 @@ Add the following lines
     
     <Directory /var/www/mini-project/laravel/public>
         Options Indexes MultiViews
-        AllowOverride None
+        AllowOverride All
         Require all granted
     </Directory>
     
@@ -199,7 +308,15 @@ Save and close the file and then enable the Apache rewrite module and activate t
 
 ```php
 a2enmod rewrite
+a2dissite 000-default.conf
 a2ensite mini-project.conf
+```
+
+Next, change the permission and ownership of `mini-project` and `laravel` directory. In order to run, Apache needs certain permissions over the Laravel directory we made. We must first give our web group control of the Laravel directory. You can read more on [Linux file permissions here](https://en.wikipedia.org/wiki/File-system_permissions)
+
+```php
+chown -R www-data:www-data /var/www/mini-project/laravel
+chmod -R 775 /var/www/mini-project/laravel
 ```
 
 Finally, reload the Apache service to apply the changes
@@ -210,61 +327,34 @@ systemctl reload apache2
 
 
 ### Access Laravel
-Now, open your web browser and access the Laravel site by visiting your domain. You will be redirected to the Laravel default page. If you get a `404 | not found` error, make sure to do the following...
-- move to your `routes` directory in your project directory which in my case is `/var/www/mini-project/laravel/routes`
-```php
-cd /var/www/mini-project/laravel/routes
-```
-- look for a file name `web.php` and remove the comments on the block of code which starts with `Routes::` it should look something like the file below
-```php
-<?php
+Now, open your web browser and access the Laravel site by visiting your domain. You will be redirected to the Laravel default page
 
-use Illuminate\Support\Facades\Route;
+#### rendered page
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="/mini-project/img/mini-proj-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="/mini-project/img/mini-proj.png">
+  <img alt="Shows the rendered page in light mode and in dark mode." src="/mini-project/img/mini-proj.png">
+</picture>
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-```
 
-##### When you are done editing the file it should now look like what I have below
+Note: Run the following commands to test that all endpoints are working as they should
 
 ```php
-<?php
-
-use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
+cd /var/www/altschool/laravel
+php artisan route:list
 ```
+
+This will return a list of all the possible endpoints in the project and you can test them by visiting your `domain name/the desired endpoint` or preferably using `postman`
+
+### apis/endpoints
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="/mini-project/img/endpoints-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="/mini-project/img/endpoints.png">
+  <img alt="Shows the endpoints in light mode and in dark mode." src="/mini-project/img/endpoints.png">
+</picture>
 
 ### Encrypt your domain and make 
 Next if you have a valid domain name, we are going to encrypt it and make our traffic use SSL/TLS
 
-
-
-### Rendered Page
-![rendered-page-laravel](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Mini-Project/images/rendered-page.jpg)
 
