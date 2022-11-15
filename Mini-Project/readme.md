@@ -351,7 +351,7 @@ This will return a list of all the possible endpoints in the project and you can
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="/Mini-Project/images/endpoints-dark.png">
   <source media="(prefers-color-scheme: light)" srcset="/Mini-Project/images/endpoints.png">
-  <img alt="Shows the endpoints in light mode and in dark mode." src="/Mini-Project/images/endpoints.png">
+  <img alt="Shows the endpoints in light mode and in dark mode." src="https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Mini-Project/images/endpoints.png">
 </picture>
 
 ### Encrypt your domain and make 
