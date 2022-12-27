@@ -8,7 +8,7 @@
       Name: "{{ subnet_name }}"
   register: az1_use1a
 
-- name: create a subnet for first az
+- name: create a subnet for second az
   amazon.aws.ec2_vpc_subnet:
     vpc_id: "{{ vpc.vpc.id }}"
     state: present
