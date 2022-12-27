@@ -1,0 +1,38 @@
+aws_access_key: "{{ vault_aws_access_key }}"
+aws_secret_key: "{{ vault_aws_secret_key }}"
+aws_region: us-east-1
+
+# Virtual Private Cloud
+vpc_name: portfolio-vpc
+vpc_cidr: 10.0.0.0/16
+
+# Subnet
+subnet_name: portfolio-subnet
+subnet_cidr: portfolio 10.0.0.0/24
+
+# Availability Zones
+az1: us-east-1a
+az1_cidr: 10.0.0.0/20
+az2: us-east-1b
+az2_cidr: 10.0.16.0/20
+
+# Internet Gateway
+igw_name: portfolio-igw
+
+# Route table
+public_route_table: portfolio-rtb-public
+private_route_table1: portfolio-rtb-private1
+private_route_table2: portfolio-rtb-private2
+
+# Security Group
+security_grp_name: portfolio-sec-grp
+
+
+# Public subnet CIDR block in us-east-1a: 10.0.0.0/20
+
+# Public subnet CIDR block in us-east-1b: 10.0.16.0/20
+
+# Private subnet CIDR block in us-east-1a: 10.0.128.0/20
+
+# Private subnet CIDR block in us-east-1b: 10.0.144.0/20
+

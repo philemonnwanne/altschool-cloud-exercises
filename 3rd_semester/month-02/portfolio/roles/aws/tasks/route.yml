@@ -1,0 +1,10 @@
+- name: create custom route table
+  amazon.aws.ec2_vpc_route_table:
+    vpc_id: "{{ vpc.vpc.id }}"
+    region: "{{ aws_region }}"
+    subnets:
+      - "{{ az1_use1a.subnet.id }}"
+      - "{{ az2_use1b.subnet.id }}"
+    routes:
+    - dest: 0.0.0.0/0
+      gateway_id: "{{ igw.gateway_id }}"
