@@ -8,3 +8,5 @@
     routes:
     - dest: 0.0.0.0/0
       gateway_id: "{{ igw.gateway_id }}"
+    tags:
+      Name: portfolio-vpc-rtb
