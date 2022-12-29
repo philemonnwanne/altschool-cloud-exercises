@@ -1,12 +1,32 @@
-- name: create custom route table
+- name: create public route table
   amazon.aws.ec2_vpc_route_table:
     vpc_id: "{{ vpc.vpc.id }}"
     region: "{{ aws_region }}"
     subnets:
-      - "{{ az1_use1a.subnet.id }}"
-      - "{{ az2_use1b.subnet.id }}"
+      - "{{ pub_az_01_use1a.subnet.id }}"
+      - "{{ pub_az_02_use1b.subnet.id }}"
     routes:
     - dest: 0.0.0.0/0
       gateway_id: "{{ igw.gateway_id }}"
     tags:
-      Name: portfolio-vpc-rtb
+      Name: "{{ pub_route_table }}"
+
+- name: create private route table one for first az
+  amazon.aws.ec2_vpc_route_table:
+    vpc_id: "{{ vpc.vpc.id }}"
+    region: "{{ aws_region }}"
+    subnets:
+      - "{{ priv_sub_01_use1a.subnet.id }}"
+    tags:
+      Name: "{{ priv_route_table_01 }}"
+  register: priv_route_01
+
+- name: create private route table two for second az
+  amazon.aws.ec2_vpc_route_table:
+    vpc_id: "{{ vpc.vpc.id }}"
+    region: "{{ aws_region }}"
+    subnets:
+      - "{{ priv_sub_02_use1b.subnet.id }}"
+    tags:
+      Name: "{{ priv_route_table_02 }}"
+  register: priv_route_02
