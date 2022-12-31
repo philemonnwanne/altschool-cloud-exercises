@@ -1,0 +1,13 @@
+- name: create the load balancer security group
+  amazon.aws.ec2_security_group:
+    name: portfolio-alb-sgrp
+    description: sg with rule descriptions
+    vpc_id: "{{ vpc.vpc.id }}"
+    region: "{{ aws_region }}"
+    rules:
+      - proto: tcp
+        ports:
+        - 80
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow all on port 80
+  register: alb_sgrp
