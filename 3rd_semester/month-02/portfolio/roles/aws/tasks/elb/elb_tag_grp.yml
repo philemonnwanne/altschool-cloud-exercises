@@ -1,6 +1,6 @@
-- name: create a target group with instance targets
+- name: create the load balancer target group with instance targets
   community.aws.elb_target_group:
-    name: elb-target-group
+    name: alb-target-group
     protocol: http
     port: 80
     vpc_id: "{{ vpc.vpc.id }}"
@@ -20,5 +20,5 @@
     state: present
     wait_timeout: 200
     wait: True
-  register: elb_tag_grp
+  register: alb_tag_grp
 
