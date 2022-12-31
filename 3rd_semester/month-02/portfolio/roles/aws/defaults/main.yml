@@ -1,0 +1,5 @@
+aws_region: us-east-1
+ami_id: ami-0b5eea76982371e91
+
+# Instance Security Group
+ec2_sec_grp_name: portfolio-sec-grp

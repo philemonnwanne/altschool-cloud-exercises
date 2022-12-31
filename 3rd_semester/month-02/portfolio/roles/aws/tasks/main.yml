@@ -2,12 +2,36 @@
 - name: create a vpc on aws
   import_tasks: vpc.yml
   
-- name: create a subnet in vpc
+- name: create subnets in vpc
   import_tasks: subnet.yml
 
 - name: create an internet gateway
   import_tasks: igw.yml
   
-- name: create a route table
+# - name: create s3 endpoints for the private route tables
+#   import_tasks: endpoint.yml
+
+- name: create the webserver instance security group
+  import_tasks: instance_sgrp.yml
+
+- name: create the webservers instance
+  import_tasks: instance.yml
+
+- name: create the bastion hosts security group
+  import_tasks: bastion_sgrp.yml
+
+- name: create the bastion hosts
+  import_tasks: bastion.yml
+
+- name: create the route tables
   import_tasks: route.yml
+
+- name: create the load balancer security group
+  import_tasks: elb_sgrp.yml
+
+- name: create a load balancer
+  import_tasks: elb.yml
+
+- name: create the load balancer target group
+  import_tasks: elb_tag_grp.yml
 

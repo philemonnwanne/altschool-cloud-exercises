@@ -1,0 +1,27 @@
+- name: create an instance with a private IP address
+  amazon.aws.ec2_instance:
+    name: "webserver-01"
+    key_name: "webserver-ssh-key"
+    vpc_subnet_id: "{{ priv_sub_01_use1a.subnet.id }}"
+    instance_type: t2.micro
+    security_group: "{{ webserver_sgrp.group_id }}"
+    network:
+      assign_public_ip: false
+    image_id: "{{ ami_id }}"
+    tags:
+      location: private subnet
+  register: webserver_01
+
+- name: create an instance with a private IP address
+  amazon.aws.ec2_instance:
+    name: "webserver-02"
+    key_name: "webserver-ssh-key"
+    vpc_subnet_id: "{{ priv_sub_02_use1b.subnet.id }}"
+    instance_type: t2.micro
+    security_group: "{{ webserver_sgrp.group_id }}"
+    network:
+      assign_public_ip: false
+    image_id: "{{ ami_id }}"
+    tags:
+      location: private subnet
+  register: webserver_02

@@ -1,0 +1,9 @@
+# tasks for /roles/aws/tasks/elb
+- name: create a vpc on aws
+  import_tasks: elb_sgrp.yml
+
+- name: create a vpc on aws
+  import_tasks: elb_tag_grp.yml
+
+- name: create a vpc on aws
+  import_tasks: elb.yml

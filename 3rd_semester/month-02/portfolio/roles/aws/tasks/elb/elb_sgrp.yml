@@ -1,7 +1,7 @@
-- name: create security group for portfolio vpc
+- name: webserver load balancer security group
   amazon.aws.ec2_security_group:
-    name: "{{ security_grp_name }}"
-    description: allow http
+    name: portfolio-elb-sgrp
+    description: sg with rule descriptions
     vpc_id: "{{ vpc.vpc.id }}"
     region: "{{ aws_region }}"
     rules:
@@ -10,3 +10,4 @@
         - 80
         cidr_ip: 0.0.0.0/0
         rule_desc: allow all on port 80
+  register: elb_sgrp

@@ -1,0 +1,29 @@
+- name: create a bastion host
+  amazon.aws.ec2_instance:
+    name: "bastion-us-east1a"
+    key_name: "webserver-ssh-key"
+    vpc_subnet_id: "{{ pub_az_01_use1a.subnet.id }}"
+    instance_type: t2.micro
+    security_group: default
+    network:
+      assign_public_ip: true
+      source_dest_check: true
+    image_id: "{{ ami_id }}"
+    tags:
+      location: public subnet
+  register: bastion_01
+
+- name: create a bastion host
+  amazon.aws.ec2_instance:
+    name: "bastion-us-east1b"
+    key_name: "webserver-ssh-key"
+    vpc_subnet_id: "{{ pub_az_02_use1b.subnet.id }}"
+    instance_type: t2.micro
+    security_group: default
+    network:
+      assign_public_ip: true
+      source_dest_check: true
+    image_id: "{{ ami_id }}"
+    tags:
+      location: public subnet
+  register: bastion_02
