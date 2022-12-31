@@ -1,9 +1,0 @@
-# tasks for /roles/aws/tasks/alb
-- name: create the load balancer security group
-  import_tasks: alb_sgrp.yml
-
-- name: create the load balancer target group with instance targets
-  import_tasks: alb_tag_grp.yml
-
-- name: create an ALB for the webservers
-  import_tasks: alb.yml
