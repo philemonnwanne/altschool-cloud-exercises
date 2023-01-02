@@ -1,0 +1,10 @@
+- name: create an ec2 launch template
+  community.aws.ec2_launch_template:
+    name: webserver-launch-template
+    image_id: "{{ ubuntu_jammy }}"
+    key_name: my-key
+    instance_type: t2.micro
+    disable_api_termination: true
+    security_group_ids: "{{ webserver_sgrp.group_id }}"
+    network_interfaces:
+      - associate_public_ip_address: false
