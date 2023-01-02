@@ -1,8 +1,0 @@
-- name: create an ec2 launch template
-  community.aws.ec2_launch_template:
-    name: my_template
-    image_id: "{{ ubuntu_jammy }}"
-    key_name: my-key
-    instance_type: t2.micro
-    # iam_instance_profile: myTestProfile
-    disable_api_termination: true

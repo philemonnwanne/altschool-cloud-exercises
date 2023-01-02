@@ -16,3 +16,9 @@
 
 - name: link the bastion host to the private route table
   import_tasks: bastion/bastion_route.yml
+
+- name: create the asg lauch template
+  import_tasks: asglt/main.yml
+
+- name: create the asg
+  import_tasks: asg/main.yml
