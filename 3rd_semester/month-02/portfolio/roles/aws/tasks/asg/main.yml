@@ -13,7 +13,7 @@
     min_size: 1
     max_size: 4
     desired_capacity: 2
-    vpc_zone_identifier: [ 'priv_sub_01', 'priv_sub_02' ]
+    vpc_zone_identifier: [ "{{ priv_sub_01_use1a.subnet.id }}", "{{ priv_sub_02_use1b.subnet.id }}" ]
     tags:
       - env: prod
         propagate_at_launch: true
