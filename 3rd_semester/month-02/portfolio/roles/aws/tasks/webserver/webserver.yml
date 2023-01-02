@@ -1,27 +1,35 @@
-- name: create an instance with a private IP address
+- name: create an webserver instance with a private IP address
   amazon.aws.ec2_instance:
-    name: "webserver-01"
-    key_name: "webserver-ssh-key"
+    name: webserver-01
+    key_name: my-key
     vpc_subnet_id: "{{ priv_sub_01_use1a.subnet.id }}"
     instance_type: t2.micro
     security_group: "{{ webserver_sgrp.group_id }}"
     network:
       assign_public_ip: false
-    image_id: "{{ ami_id }}"
+    image_id: "{{ ubuntu_jammy }}"
     tags:
+      env: prod
       location: private subnet
+    wait: true
+    wait_timeout: 600
+    user_data: "{{ user_data }}"
   register: webserver_01
 
-- name: create an instance with a private IP address
+- name: create an webserver instance with a private IP address
   amazon.aws.ec2_instance:
-    name: "webserver-02"
-    key_name: "webserver-ssh-key"
+    name: webserver-02
+    key_name: my-key
     vpc_subnet_id: "{{ priv_sub_02_use1b.subnet.id }}"
     instance_type: t2.micro
     security_group: "{{ webserver_sgrp.group_id }}"
     network:
       assign_public_ip: false
-    image_id: "{{ ami_id }}"
+    image_id: "{{ ubuntu_jammy }}"
     tags:
+      env: prod
       location: private subnet
+    wait: true
+    wait_timeout: 600
+    user_data: "{{ user_data }}"
   register: webserver_02

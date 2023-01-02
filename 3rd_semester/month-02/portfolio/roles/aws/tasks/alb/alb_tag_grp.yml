@@ -4,21 +4,16 @@
     protocol: http
     port: 80
     vpc_id: "{{ vpc.vpc.id }}"
-    health_check_protocol: http
-    health_check_path: /health_check
-    health_check_port: 80
-    successful_response_codes: 200
-    health_check_interval: 15
-    health_check_timeout: 3
-    healthy_threshold_count: 4
-    unhealthy_threshold_count: 3
+    # health_check_protocol: http
+    # health_check_path: /
+    # successful_response_codes: "200,250-260"
     targets:
-      - Id: "{{ webserver_01.instances.instance_id }}"
+      - Id: "{{ webserver_01.instances[0].instance_id }}"
         Port: 80
-      - Id: "{{ webserver_02.instances.instance_id }}"
+      - Id: "{{ webserver_02.instances[0].instance_id }}"
         Port: 80
     state: present
     wait_timeout: 200
-    wait: True
+    wait: true
   register: alb_tag_grp
 

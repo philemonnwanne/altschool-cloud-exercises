@@ -7,11 +7,11 @@
       - "{{ priv_sub_01_use1a.subnet.id }}"
     routes:
     - dest: 0.0.0.0/0
-      instance_id: "{{ bastion_01.instances.instance_id }}"
+      instance_id: "{{ bastion_01.instances[0].instance_id }}"
     tags:
       Name: "{{ priv_route_table_01 }}"
   register: priv_route_01
-  when: bastion_01.instances.state == "present"
+  # when: bastion_01.instances[0].state.name == "running"
 
 - name: create private route table two for second az
   amazon.aws.ec2_vpc_route_table:
@@ -21,8 +21,8 @@
       - "{{ priv_sub_02_use1b.subnet.id }}"
     routes:
     - dest: 0.0.0.0/0
-      instance_id: "{{ bastion_02.instances.instance_id }}"
+      instance_id: "{{ bastion_02.instances[0].instance_id }}"
     tags:
       Name: "{{ priv_route_table_02 }}"
   register: priv_route_02
-  when: bastion_02.instances.state == "present"
+  # when: bastion_02.instances[0].state.name == "running"

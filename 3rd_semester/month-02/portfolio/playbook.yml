@@ -1,14 +1,19 @@
 # this playbook deploys the whole application stack in this site
 ---
-- name: configure and deploy the webservers and application code
+- name: configure and deploy the aws infrastructure
   hosts: localhost
   connection: local
-  # become: true # perform all ansible playbook tasks as another user
-  # become_user: root # default username to be used by Ansible
   roles:
     - aws
-    # - nginx
     # - passenger
     # - python
     # - uwsgix
     # - common
+    
+---
+- name: configure and deploy the webservers and application code
+  hosts: role_prod
+  become: true 
+  become_user: root 
+  roles:
+    - nginx

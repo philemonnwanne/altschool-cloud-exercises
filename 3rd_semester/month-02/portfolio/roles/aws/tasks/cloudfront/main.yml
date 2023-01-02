@@ -1,0 +1,9 @@
+- name: add an alias record that points to an amazon ELB
+  amazon.aws.route53:
+    state: present
+    zone: philemonnwanne.me
+    record: www.philemonnwanne.me
+    type: A
+    value: "{{ alb.dns_name }}"
+    alias: True
+    alias_hosted_zone_id: "{{ alb.canonical_hosted_zone_id }}"

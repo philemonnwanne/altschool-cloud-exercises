@@ -11,5 +11,5 @@
         - 80
         - 443
         cidr_ip: 0.0.0.0/0
-        rule_desc: allow all on port 22, 80 and 443
+        rule_desc: allow instances in the private subnet to reach out to the internet for security patches
   register: bastion_sgrp

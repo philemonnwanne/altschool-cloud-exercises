@@ -1,0 +1,17 @@
+---
+- name: basic configuration with launch template
+  amazon.aws.autoscaling_group:
+    name: webserver-asg
+    load_balancers: [ alb.name ]
+    availability_zones: [ "{{ pub_az_01 }}", "{{ pub_az_02 }}" ]
+    launch_template:
+        version: '1'
+        # launch_template_name: {{ webserver_launch_template }}
+        launch_template_id: {{  }}
+    min_size: 1
+    max_size: 4
+    desired_capacity: 2
+    vpc_zone_identifier: [ 'pub_sub_01', 'pub_sub_01' ]
+    tags:
+      - environment: production
+        propagate_at_launch: false

@@ -5,9 +5,9 @@
     state: directory
     mode: "0755"
 
-- name: copy new html file
+- name: copy web application files
   ansible.builtin.copy:
-    src: files/index.html
+    src: files/build/
     dest: "{{ document_root }}"
     mode: "0644"
 

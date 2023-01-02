@@ -1,5 +1,8 @@
 aws_region: us-east-1
-ami_id: ami-0b5eea76982371e91
-
-# Instance Security Group
-ec2_sec_grp_name: portfolio-sec-grp
+amazon_linux_2: ami-0b5eea76982371e91
+amazon_nat_ami: ami-04027ecc3f40c1801
+ubuntu_jammy: ami-0574da719dca65348
+suse_linux_15: ami-0b5375d1a386bdf09
+debian_bullseye: ami-050406429a71aaa64
+# instance_type: t2.micro
+user_data: "{{ lookup('file', 'user_data.sh') }}"

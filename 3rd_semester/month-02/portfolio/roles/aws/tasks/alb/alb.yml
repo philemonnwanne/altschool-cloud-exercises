@@ -3,15 +3,16 @@
   amazon.aws.elb_application_lb:
     name: portfolio-alb
     security_groups:
-      - "{{ alb_sgrp }}"
+      - "{{ alb_sgrp.group_id }}"
     subnets:
       - "{{ pub_az_01_use1a.subnet.id }}"
       - "{{ pub_az_02_use1b.subnet.id }}"
     listeners:
       - Protocol: HTTP
         Port: 80
-        SslPolicy: ELBSecurityPolicy-2015-05
+        # SslPolicy: ELBSecurityPolicy-2015-05
         DefaultActions:
           - Type: forward
             TargetGroupName: "{{ alb_tag_grp.target_group_name }}"
     state: present
+  register: alb
