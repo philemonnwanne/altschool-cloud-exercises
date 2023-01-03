@@ -1,11 +1,17 @@
+---
 - name: create an ec2 launch template
   community.aws.ec2_launch_template:
     name: webserver-launch-template
+    region: "{{ aws_region }}"
     image_id: "{{ ubuntu_jammy }}"
+    placement:
+      availability_zone: "{{ priv_az_01 }}"
     key_name: my-key
     instance_type: t2.micro
     disable_api_termination: true
     security_group_ids: "{{ webserver_sgrp.group_id }}"
     network_interfaces:
-      - associate_public_ip_address: false
-      - device_index: 0
+    #   - associate_public_ip_address: false
+    #   - device_index: 0
+      - subnet_id: "{{ priv_sub_01_use1a.subnet.id }}"
+      - subnet_id: "{{ priv_sub_02_use1b.subnet.id }}"

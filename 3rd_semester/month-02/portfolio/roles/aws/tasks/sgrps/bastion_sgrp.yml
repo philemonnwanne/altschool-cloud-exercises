@@ -1,4 +1,5 @@
-- name: create security group for bastion instance
+---
+- name: create the bastion host security group
   amazon.aws.ec2_security_group:
     name: bastion-sgrp
     description: allow ssh, http and https traffic
@@ -11,5 +12,5 @@
         - 80
         - 443
         cidr_ip: 0.0.0.0/0
-        rule_desc: allow instances in the private subnet to reach out to the internet for security patches
+        rule_desc: allow the bastion host to serve as a NAT instance
   register: bastion_sgrp

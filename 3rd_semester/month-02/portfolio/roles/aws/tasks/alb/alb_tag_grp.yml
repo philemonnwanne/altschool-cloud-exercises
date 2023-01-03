@@ -1,3 +1,4 @@
+---
 - name: create the load balancer target group with instance targets
   community.aws.elb_target_group:
     name: alb-target-group
@@ -8,7 +9,7 @@
     health_check_protocol: http
     health_check_path: /
     health_check_interval: 5
-    health_check_timeout: 60
+    health_check_timeout: 3
     healthy_threshold_count: 2
     unhealthy_threshold_count: 5
     successful_response_codes: "200-299"
@@ -22,4 +23,7 @@
     wait_timeout: 400
     wait: true
   register: alb_tag_grp
+  retries: 10
+  until: alb_tag_grp is not failed
+  delay: 1
 

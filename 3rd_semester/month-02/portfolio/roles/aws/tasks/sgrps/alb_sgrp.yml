@@ -1,3 +1,4 @@
+---
 - name: create the load balancer security group
   amazon.aws.ec2_security_group:
     name: alb-sgrp
