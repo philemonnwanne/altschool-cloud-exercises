@@ -9,7 +9,7 @@
     health_check_path: /
     health_check_interval: 2
     health_check_timeout: 60
-    healthy_threshold_count: 1
+    healthy_threshold_count: 2
     unhealthy_threshold_count: 5
     successful_response_codes: "200-299"
     target_type: instance
