@@ -4,6 +4,7 @@
     name: portfolio-alb
     security_groups:
       - "{{ alb_sgrp.group_id }}"
+    ip_address_type: ipv4
     subnets:
       - "{{ pub_az_01_use1a.subnet.id }}"
       - "{{ pub_az_02_use1b.subnet.id }}"
