@@ -7,7 +7,7 @@
     vpc_id: "{{ vpc.vpc.id }}"
     health_check_protocol: http
     health_check_path: /
-    health_check_interval: 2
+    health_check_interval: 5
     health_check_timeout: 60
     healthy_threshold_count: 2
     unhealthy_threshold_count: 5
