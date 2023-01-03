@@ -2,9 +2,11 @@
 - name: create an ALB for the webservers
   amazon.aws.elb_application_lb:
     name: portfolio-alb
+    region: "{{ aws_region }}"
     security_groups:
       - "{{ alb_sgrp.group_id }}"
     ip_address_type: ipv4
+    scheme: internet-facing
     subnets:
       - "{{ pub_az_01_use1a.subnet.id }}"
       - "{{ pub_az_02_use1b.subnet.id }}"
