@@ -1,5 +1,5 @@
 ---
-- name: check for existence of symbolic link of the default nginx site
+- name: check for the existence of a symbolic link to the default nginx site
   ansible.builtin.stat:
     path: "{{ link_path }}"
   register: link

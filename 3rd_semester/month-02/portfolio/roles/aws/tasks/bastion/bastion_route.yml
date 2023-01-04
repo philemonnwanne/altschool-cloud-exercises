@@ -11,7 +11,7 @@
     tags:
       Name: "{{ priv_route_table_01 }}"
   register: priv_route_01
-  # when: bastion_01.instances[0].state.name == "running"
+  when: bastion_01.instances[0].state.name == "running"
 
 - name: create private route table two for second az
   amazon.aws.ec2_vpc_route_table:
@@ -25,4 +25,4 @@
     tags:
       Name: "{{ priv_route_table_02 }}"
   register: priv_route_02
-  # when: bastion_02.instances[0].state.name == "running"
+  when: bastion_02.instances[0].state.name == "running"

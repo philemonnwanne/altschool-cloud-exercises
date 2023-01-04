@@ -1,5 +1,5 @@
 ---
-- name: create the load balancer target group with instance targets
+- name: create the load balancer target group
   community.aws.elb_target_group:
     name: alb-target-group
     region: "{{ aws_region }}"
@@ -8,22 +8,18 @@
     vpc_id: "{{ vpc.vpc.id }}"
     health_check_protocol: http
     health_check_path: /
-    health_check_interval: 5
-    health_check_timeout: 3
+    health_check_interval: 30
+    health_check_timeout: 5
     healthy_threshold_count: 2
-    unhealthy_threshold_count: 5
-    successful_response_codes: "200-299"
-    target_type: instance
-    targets:
-      - Id: "{{ webserver_01.instances[0].instance_id }}"
-        Port: 80
-      - Id: "{{ webserver_02.instances[0].instance_id }}"
-        Port: 80
+    unhealthy_threshold_count: 10
+    successful_response_codes: "200-499"
+    # targets:
+    #   - Id: "{{ webserver_01.instances[0].instance_id }}"
+    #     Port: 80
+    #   - Id: "{{ webserver_02.instances[0].instance_id }}"
+    #     Port: 80
     state: present
-    wait_timeout: 400
-    wait: true
   register: alb_tag_grp
   retries: 10
   until: alb_tag_grp is not failed
-  delay: 1
-
+  delay: 5

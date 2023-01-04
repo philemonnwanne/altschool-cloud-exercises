@@ -1,7 +1,5 @@
 # tasks for /roles/aws/tasks/bastion
-- name: create a security group for the bastion host
-  import_tasks: bastion_sgrp.yml
-
+---
 - name: create a bastion host
   import_tasks: bastion.yml
 

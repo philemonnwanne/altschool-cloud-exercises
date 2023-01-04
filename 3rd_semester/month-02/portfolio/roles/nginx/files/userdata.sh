@@ -1,7 +1,9 @@
 #!/bin/bash
-sudo yum update -y
-sudo yum install -y httpd
-sudo yum install -y git
+apt update -y
+apt install nginx -y
+systemctl start nginx
+systemctl restart nginx
+
 export META_INST_ID=`curl http://169.254.169.254/latest/meta-data/instance-id`
 export META_INST_TYPE=`curl http://169.254.169.254/latest/meta-data/instance-type`
 export META_INST_AZ=`curl http://169.254.169.254/latest/meta-data/placement/availability-zone`
@@ -116,4 +118,4 @@ echo "            </div>" >> ${document}
 echo "        </div>" >> ${document}
 echo "</body>" >> ${document}
 echo "</html>" >> ${document}
-sudo service httpd start
+systemctl restart nginx

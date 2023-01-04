@@ -1,8 +1,9 @@
 # tasks for /roles/nginx/tasks/
-- name: install the nginx web server for amazon linux 2 
+---
+- name: install the nginx web server
   import_tasks: install.yml
 
-- name: configure nginx web server
+- name: configure the nginx web server
   import_tasks: config.yml
 
 - name: setup the nginx service
