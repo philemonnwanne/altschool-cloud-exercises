@@ -10,8 +10,6 @@ regions:
 keyed_groups:
   - key: tags.env
     prefix: role
-  - key: tags.env
-    prefix: role
 
 # ansible_user: ubuntu
 ansible_ssh_common_args: '-o ProxyCommand="ssh -q -A {{ ansible_user }}@{{ bastion_ip }} nc -W 300 %h %p"'
