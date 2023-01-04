@@ -9,7 +9,7 @@
 - name: add an alias record that points to an amazon ALB
   amazon.aws.route53:
     state: present
-    zone: "{{ zone.zone_id }}"
+    zone: philemonnwanne.me
     record: www.philemonnwanne.me
     type: A
     value: "{{ alb.dns_name }}"

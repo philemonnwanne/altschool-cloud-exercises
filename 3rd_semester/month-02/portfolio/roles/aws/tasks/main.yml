@@ -3,6 +3,9 @@
 - name: create a custom aws vpc
   import_tasks: vpc/main.yml
 
+- name: create all security groups
+  import_tasks: sgrps/main.yml
+
 - name: create an ec2 key
   import_tasks: key/main.yml
 
@@ -17,6 +20,9 @@
 
 - name: link the bastion host to the private route table
   import_tasks: bastion/bastion_route.yml
+
+- name: create the hosted zone
+  import_tasks: route53/main.yml
 
 - name: create the asg lauch template
   import_tasks: asglt/main.yml
