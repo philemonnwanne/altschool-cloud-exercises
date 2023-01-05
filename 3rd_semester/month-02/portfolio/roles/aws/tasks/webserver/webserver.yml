@@ -15,7 +15,6 @@
     wait_timeout: 600
     user_data: "{{ user_data }}"
   register: webserver_01
-  when: bastion_02.instances[0].state.name == "started"
 
 - name: create an webserver instance with a private IP address
   amazon.aws.ec2_instance:
@@ -34,4 +33,3 @@
     wait_timeout: 600
     user_data: "{{ user_data }}"
   register: webserver_02
-  when: bastion_02.instances[0].state.name == "started"
