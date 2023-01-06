@@ -1,11 +1,11 @@
 ---
-- name: basic asg config with launch template
+- name: create the webserver asg from launch template
   amazon.aws.autoscaling_group:
     name: webserver-asg
     region: "{{ aws_region }}"
     target_group_arns: "{{ alb_tag_grp.target_group_arn }}"
     availability_zones: [ "{{ priv_az_01 }}", "{{ priv_az_02 }}" ] 
-    health_check_period: 500
+    health_check_period: 365
     health_check_type: 'ELB'
     launch_template:
         launch_template_name: webserver-launch-template
@@ -19,4 +19,5 @@
       - Name: webserver
         propagate_at_launch: true
     wait_for_instances: true
-    wait_timeout: 1000
+    wait_timeout: 360
+  register: asg

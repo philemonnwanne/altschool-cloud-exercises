@@ -1,7 +1,8 @@
 #!/bin/bash
-sudo yum update -y
-sudo amazon-linux-extras install -y nginx1
-sudo systemctl restart nginx
+apt update -y
+apt install nginx -y
+systemctl start nginx
+systemctl restart nginx
 
 export META_INST_ID=`curl http://169.254.169.254/latest/meta-data/instance-id`
 export META_INST_TYPE=`curl http://169.254.169.254/latest/meta-data/instance-type`
@@ -117,4 +118,4 @@ echo "            </div>" >> ${document}
 echo "        </div>" >> ${document}
 echo "</body>" >> ${document}
 echo "</html>" >> ${document}
-sudo systemctl restart nginx
+systemctl restart nginx

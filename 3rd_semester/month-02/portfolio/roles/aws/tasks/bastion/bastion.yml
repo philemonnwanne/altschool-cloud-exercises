@@ -32,3 +32,8 @@
     wait: true
     wait_timeout: 600
   register: bastion_02
+
+- name: sleep for 300 seconds and continue with play
+  ansible.builtin.wait_for:
+    timeout: 300
+  delegate_to: localhost

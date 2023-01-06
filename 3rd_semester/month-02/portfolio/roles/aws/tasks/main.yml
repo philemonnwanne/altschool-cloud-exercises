@@ -21,7 +21,7 @@
 - name: link the bastion host to the private route table
   import_tasks: bastion/bastion_route.yml
 
-- name: create the hosted zone
+- name: create a hosted zone and record
   import_tasks: route53/main.yml
 
 - name: create the asg lauch template

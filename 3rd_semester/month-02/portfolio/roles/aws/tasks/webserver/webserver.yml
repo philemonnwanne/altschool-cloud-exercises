@@ -33,3 +33,8 @@
     wait_timeout: 600
     user_data: "{{ user_data }}"
   register: webserver_02
+
+- name: Sleep for 120 seconds and continue with play
+  ansible.builtin.wait_for:
+    timeout: 120
+  delegate_to: localhost
