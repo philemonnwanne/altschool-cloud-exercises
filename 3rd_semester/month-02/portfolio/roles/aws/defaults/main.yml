@@ -6,3 +6,4 @@ suse_linux_15: ami-0b5375d1a386bdf09
 debian_bullseye: ami-050406429a71aaa64
 # instance_type: t2.micro
 user_data: "{{ lookup('file', 'user_data.sh') }}"
+ssl_cert: arn:aws:acm:us-east-1:183066416469:certificate/ed9b93c3-253c-4f46-b2e2-370a7734fdb2

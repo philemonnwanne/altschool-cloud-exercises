@@ -11,7 +11,7 @@
 
 - name: create webserver instances
   import_tasks: webserver/main.yml
-
+  
 - name: create the bastion hosts
   import_tasks: bastion/main.yml
 
@@ -21,11 +21,18 @@
 - name: link the bastion host to the private route table
   import_tasks: bastion/bastion_route.yml
 
-- name: create a hosted zone and record
-  import_tasks: route53/main.yml
+# - name: create the asg lauch template
+#   import_tasks: asglt/main.yml
 
-- name: create the asg lauch template
-  import_tasks: asglt/main.yml
+# - name: create the asg
+#   import_tasks: asg/main.yml
 
-- name: create the asg
-  import_tasks: asg/main.yml
+# - name: add webserver instance to host group [role_prod]
+#   ansible.builtin.add_host:
+#     name: "{{ asg.instances }}"
+#     groups: role_prod
+
+# - name: sleep for 60 seconds and continue with play
+#   ansible.builtin.wait_for:
+#     timeout: 60
+#   delegate_to: localhost

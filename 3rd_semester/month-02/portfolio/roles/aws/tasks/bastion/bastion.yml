@@ -11,6 +11,7 @@
       source_dest_check: false
     image_id: "{{ amazon_nat_ami }}"
     tags:
+      name: bastion
       location: public subnet
     wait: true
     wait_timeout: 600
@@ -28,6 +29,7 @@
       source_dest_check: false
     image_id: "{{ amazon_nat_ami }}"
     tags:
+      name: bastion
       location: public subnet
     wait: true
     wait_timeout: 600

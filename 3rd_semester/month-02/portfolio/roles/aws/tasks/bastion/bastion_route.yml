@@ -12,6 +12,10 @@
       Name: "{{ priv_route_table_01 }}"
   register: priv_route_01
   # when: bastion_01.instances[0].state.name == "present"
+- name: add NAT/bastion instance to host group [bastion]
+  ansible.builtin.add_host:
+    name: "{{ bastion_01.instances[0].public_ip_address }}"
+    groups: bastion
 
 - name: create private route table two for second az
   amazon.aws.ec2_vpc_route_table:
@@ -29,10 +33,7 @@
 
 - name: add NAT/bastion instance to host group [bastion]
   ansible.builtin.add_host:
-    name: "{{ bastion_01.instances[0].public_ip_address }}"
+    name: "{{ bastion_02.instances[0].public_ip_address }}"
     groups: bastion
 
-- name: add webserver instance to host group [role_prod]
-  ansible.builtin.add_host:
-    name: "{{ webserver_01.instances[0].private_ip_address }}"
-    groups: role_prod
+
