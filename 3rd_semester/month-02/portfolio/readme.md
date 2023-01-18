@@ -5,20 +5,11 @@
 **Link to my deployment:** https://philemonnwanne.me
 
 
-### NETWORK DIAGRAM
-![my-logical-network](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Exam/img/logical-network.jpg)
-
-
 ### AWS CLOUD CREDENTIALS
 
-Click [here](https://philemonnwanne.signin.aws.amazon.com/console) to connect any of the users below to my aws console
+Click [here](https://philemonnwanne.signin.aws.amazon.com/console) to access my aws console
 
-**Password:** ADMIN@altschool2022
+**Password:** altschool-ADMIN1#
 
-**Users:**
-- Kunrad
-- Valentine
-- Jerry
-
-**Group:**
-- altschool-admin
+**User:** 
+admin@altschool
