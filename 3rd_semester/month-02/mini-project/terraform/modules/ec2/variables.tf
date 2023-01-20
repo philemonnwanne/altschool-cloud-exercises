@@ -1,5 +1,5 @@
 variable "ami_id" {
-  description = "the id of the machine image (AMI) to use for creating the server"
+  description = "the id of the machine image (AMI) to use for launching the server"
   type        = map
   default     = {
     "amazon_linux_2_ami" : "ami-0b5eea76982371e91",
@@ -23,17 +23,35 @@ variable "instance_name" {
   default     = "webserver-"
 }
 
-# variable "instance_secgrp_id" {
-#   description = "security group to associate with the webserver instances"
-#   # type        = list(string)
-#   # default = [ "" ]
-# }
+variable "vpc_security_group_ids" {
+  description = "security group to associate with the webserver instances"
+  type        = list(string)
+  # default = [ "" ]
+}
 
-# variable "vpc_subnet_id" {
-#   description = "VPC subnet to launch instance"
-#   # type        = string
-#   # default = ""
-# }
+variable "subnet_id" {
+  description = "VPC subnet to launch instance"
+  type        = string
+  # default = ""
+}
+
+variable "instance_type" {
+  description = "the size of the instance to be deployed"
+  type        = string
+  default     = "t2.micro"
+}
+
+variable "user_data" {
+  description = "the script to run on (first) instance boot"
+  type        = string
+  default     = "./files/init-script.sh"
+}
+
+variable "putin" {
+  description = "putin_khuylo means {putin [is a] dickhead}. The phrase has become a protest song and is widely spread in Ukraine amongst supporters of Ukrainian sovereignty and territorial integrity, as well as those opposing Vladimir Putin in both Russia and Ukraine."
+  type        = bool
+  default     = "true"
+}
 
 # variable "amazon_linux_2_ami" {
 #   description = "the id of the machine image (AMI) to use for creating the server"
@@ -54,21 +72,3 @@ variable "instance_name" {
 #     error_message = "the image_id value must be a valid AMI id, starting with \"ami-\"."
 #   }
 # }
-
-variable "instance_type" {
-  description = "the size of the instance to be deployed"
-  type        = string
-  default     = "t2.micro"
-}
-
-variable "user_data" {
-  description = "the script to run on (first) instance boot"
-  type        = string
-  default     = "./files/init-script.sh"
-}
-
-variable "putin" {
-  description = "putin_khuylo means {putin [is a] dickhead}. The phrase has become a protest song and is widely spread in Ukraine amongst supporters of Ukrainian sovereignty and territorial integrity, as well as those opposing Vladimir Putin in both Russia and Ukraine."
-  type        = bool
-  default     = "true"
-}

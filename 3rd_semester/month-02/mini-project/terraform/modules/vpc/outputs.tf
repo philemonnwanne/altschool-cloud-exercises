@@ -17,8 +17,3 @@ output "mini_vpc_secgrp_id" {
     description = "project VPC default security group ID"
     value = module.vpc.default_security_group_id
 }
-
-output "mini_vpc_igw_id" {
-    description = "project VPC internet gateway ID"
-    value = module.vpc.igw_id
-}

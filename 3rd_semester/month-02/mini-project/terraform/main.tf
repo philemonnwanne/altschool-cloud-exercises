@@ -18,8 +18,6 @@ terraform {
 /* this block configures the AWS provider */
 provider "aws" {
   region = var.aws_region
-  shared_config_files      = var.aws_shared_config_files
-  shared_credentials_files = var.aws_shared_credentials_files
 }
 
 module "vpc" {
@@ -27,14 +25,15 @@ module "vpc" {
   vpc_name = "mini-vpc"
 }
 
-module "security-group" {
-  source = "./modules/security-group"
+module "security" {
+  source = "./modules/security"
   vpc_id = module.vpc.mini_vpc_id
 }
 
-module "ec2-instance" {
-  source = "./modules/ec2-instance"
- 
+module "ec2" {
+  source = "./modules/ec2"
+  subnet_id = module.vpc.mini_vpc_subnet_id
+  vpc_security_group_ids = [module.security.webserver_secgrp_id]
 }
 
 module "alb" {
@@ -46,8 +45,8 @@ module "route53" {
 }
 
 resource "local_file" "host_inventory" {
-  content = "module.ec2-instance[*].public_ip"
-  filename = "$HOME/hosts"
+  content = "module.ec2.webserver_public_ip"
+  filename = "../hosts"
 }
 
 # provisioner "local-exec" {
