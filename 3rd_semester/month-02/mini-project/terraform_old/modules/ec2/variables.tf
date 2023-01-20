@@ -1,9 +1,9 @@
 variable "ami_id" {
-  description = "the id of the machine image (AMI) to use for the server"
-  type        = map(string)
-  default = {
-    amazon_linux_2_ami = "ami-0b5eea76982371e91"
-    ubuntu_ami = "ami-0574da719dca65348"
+  description = "the id of the machine image (AMI) to use for creating the server"
+  type        = map
+  default     = {
+    "amazon_linux_2_ami" : "ami-0b5eea76982371e91",
+    "ubuntu_ami" : "ami-0574da719dca65348"
   }
   validation {
     condition     = length(var.ami_id.ubuntu_ami) > 4 && substr(var.ami_id.ubuntu_ami, 0, 4) == "ami-" || length(var.ami_id.amazon_linux_2_ami) > 4 && substr(var.ami_id.amazon_linux_2_ami, 0, 4) == "ami-"
@@ -11,8 +11,20 @@ variable "ami_id" {
   }
 }
 
+variable "instance_count" {
+  description = "create 3 similar EC2 instances"
+  type        = number
+  default     = 3
+}
+
+variable "instance_name" {
+  description = "create 3 similar EC2 instances"
+  type        = string
+  default     = "webserver-"
+}
+
 # variable "amazon_linux_2_ami" {
-#   description = "the id of the machine image (AMI) to use for the server"
+#   description = "the id of the machine image (AMI) to use for creating the server"
 #   type        = string
 #   default     = "ami-0b5eea76982371e91"
 #   validation {
@@ -22,7 +34,7 @@ variable "ami_id" {
 # }
 
 # variable "ubuntu_ami" {
-#   description = "the id of the machine image (AMI) to use for the server"
+#   description = "the id of the machine image (AMI) to use for creating the server"
 #   type        = string
 #   default     = "ami-0574da719dca65348"
 #   validation {
@@ -32,7 +44,7 @@ variable "ami_id" {
 # }
 
 variable "instance_type" {
-  description = "the id of the instance to be deployed"
+  description = "the size of the instance to be deployed"
   type        = string
   default     = "t2.micro"
 }
@@ -43,3 +55,8 @@ variable "user_data" {
   default     = "./files/init-script.sh"
 }
 
+variable "putin" {
+  description = "putin_khuylo means {putin [is a] dickhead}. The phrase has become a protest song and is widely spread in Ukraine amongst supporters of Ukrainian sovereignty and territorial integrity, as well as those opposing Vladimir Putin in both Russia and Ukraine."
+  type        = bool
+  default     = "true"
+}

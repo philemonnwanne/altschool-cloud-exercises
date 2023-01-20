@@ -1,9 +1,38 @@
-output "vpc_public_subnets" {
-  description = "IDs of the VPC's public subnets"
-  value       = module.vpc.public_subnets
+output "final_vpc_id" {
+    description = "id of project VPC"
+    value = module.vpc.mini_vpc_id
 }
 
-output "ec2_instance_public_ips" {
-  description = "Public IP addresses of EC2 instances"
-  value       = module.ec2_instances[*].public_ip
+output "final_vpc_name" {
+    description = "project VPC name"
+    value = module.vpc.mini_vpc_name
+}
+
+output "final_vpc_subnet_id" {
+    description = "project VPC subnet ID"
+    value = module.vpc.mini_vpc_subnet_id
+}
+
+output "final_vpc_secgrp_id" {
+     description = "project VPC default security group ID"
+    value = module.vpc.mini_vpc_secgrp_id
+}
+
+output "final_vpc_igw_id" {
+    description = "project VPC internet gateway ID"
+    value = module.vpc.mini_vpc_igw_id
+}
+
+output "final_webserver_secgrp_id" {
+    description = "security groups controlling traffic access to the webserver instances"
+    value = module.security-group.webserver_secgrp_id
+}
+
+output "final_instance_public_ip" {
+    description = "public IP addresses of EC2 webserver instances"
+    value = module.ec2-instance[*].webserver_public_ip
+}
+
+output "final_number-of-instances-created" {
+    value = length(module.ec2-instance[*].webserver_count)
 }

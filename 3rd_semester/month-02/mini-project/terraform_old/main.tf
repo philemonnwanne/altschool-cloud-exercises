@@ -22,19 +22,14 @@ provider "aws" {
   shared_credentials_files = var.aws_shared_credentials_files
 }
 
+
 module "vpc" {
   source = "./modules/vpc"
   vpc_name = "mini-vpc"
 }
 
-module "security-group" {
-  source = "./modules/security-group"
-  vpc_id = module.vpc.mini_vpc_id
-}
-
-module "ec2-instance" {
-  source = "./modules/ec2-instance"
- 
+module "ec2" {
+  source = "./modules/ec2"
 }
 
 module "alb" {
