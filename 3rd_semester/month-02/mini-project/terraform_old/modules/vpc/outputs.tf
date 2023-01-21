@@ -1,9 +1,19 @@
-output "vpc-id" {
-    description = "id of project VPC"
+output "mini_vpc_id" {
+    description = "project VPC ID"
     value = module.vpc.vpc_id
 }
 
-output "vpc-subnet-id" {
-    description = "subnet id of project VPC"
-    value = module.vpc.public_subnets
+output "mini_vpc_name" {
+    description = "project VPC name"
+    value = module.vpc.name
+}
+
+output "mini_vpc_subnet_id" {
+    description = "project VPC subnet ID"
+    value = module.vpc.public_subnets[0]
+}
+
+output "mini_vpc_secgrp_id" {
+    description = "project VPC default security group ID"
+    value = module.vpc.default_security_group_id
 }
