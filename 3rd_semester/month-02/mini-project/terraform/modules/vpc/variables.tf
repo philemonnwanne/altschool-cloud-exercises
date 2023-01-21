@@ -40,12 +40,12 @@ variable "vpc_private_subnets_names" {
   default     = ["mini-subnet-private1-us-east-1a", "mini-subnet-private2-us-east-1b"]
 }
 
-variable "vpc_tags" {
+variable "tags" {
   description = "tags to apply to resources created by VPC module"
   type        = map(string)
-  default = {
-    Identity = "not-default-vpc"
-    Environment = "prod"
-    Description = "this VPC was created to house my Altschool third semester mini-project"
-  }
+  # default = {
+  #   Identity = "knull"
+  #   Environment = "production"
+  #   Description = "this VPC was created to house my Altschool third semester mini-project"
+  # }
 }

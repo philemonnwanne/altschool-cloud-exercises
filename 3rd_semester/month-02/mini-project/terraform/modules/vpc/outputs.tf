@@ -10,10 +10,10 @@ output "mini_vpc_name" {
 
 output "mini_vpc_subnet_id" {
     description = "project VPC subnet ID"
-    value = module.vpc.public_subnets[0]
+    value = module.vpc.public_subnets
 }
 
-output "mini_vpc_secgrp_id" {
+output "mini_vpc_security_group_id" {
     description = "project VPC default security group ID"
     value = module.vpc.default_security_group_id
 }
