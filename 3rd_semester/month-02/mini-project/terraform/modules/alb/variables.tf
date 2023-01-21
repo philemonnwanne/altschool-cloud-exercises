@@ -1,31 +1,53 @@
-variable "amazon_linux_2_ami" {
-  description = "the id of the machine image (AMI) to use for the server"
+variable "alb_name" {
+  description = "application load balancer name"
   type        = string
-  default     = "ami-0b5eea76982371e91"
-  validation {
-    condition     = length(var.amazon_linux_2_ami) > 4 && substr(var.amazon_linux_2_ami, 0, 4) == "ami-"
-    error_message = "the image_id value must be a valid AMI id, starting with \"ami-\"."
-  }
+  default     = "webserver-alb"
 }
 
-variable "ubuntu_ami" {
-  description = "the id of the machine image (AMI) to use for the server"
+variable "vpc_id" {
+  description = "VPC default id"
   type        = string
-  default     = "ami-0574da719dca65348"
-  validation {
-    condition     = length(var.ubuntu_ami) > 4 && substr(var.ubuntu_ami, 0, 4) == "ami-"
-    error_message = "the image_id value must be a valid AMI id, starting with \"ami-\"."
-  }
 }
 
-variable "instance_type" {
+variable "subnets" {
+  description = "a list of subnets to associate with the load balancer"
+  type        = list(string)
+}
+
+variable "security_groups" {
+  description = "the security groups to attach to the load balancer"
+  type        = list(string)
+}
+
+variable "target_groups_name" {
+  description = "name prefix to assign to webserver instances"
+  type        = string
+  default     = "web-tg"
+}
+
+variable "target_type" {
+  description = "load balancer target type e.g (instance)(ip-address)(lambda)"
+  type        = string
+  default     = "instance"
+}
+
+variable "target_01" {
+  description = "a map containing a key/value pair that define the first target"
+  type        = string
+}
+
+variable "target_02" {
+  description = "a map containing a key/value pair that define the second target"
+  type        = string
+}
+
+variable "target_03" {
+  description = "a map containing a key/value pair that define the third target"
+  type        = string
+}
+
+variable "ssl_cert" {
   description = "the id of the instance to be deployed"
   type        = string
-  default     = "t2.micro"
-}
-
-variable "user_data" {
-  description = "the script to run on (first) instance boot"
-  type        = string
-  default     = "ami-0574da719dca65348"
+  default     = "arn:aws:acm:us-east-1:183066416469:certificate/ed9b93c3-253c-4f46-b2e2-370a7734fdb2"
 }
