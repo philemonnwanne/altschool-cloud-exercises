@@ -1,5 +1,5 @@
 /* 
-this block creates three EC2 instances
+this block creates three similar EC2 instances
 */
 
 module "ec2" {
@@ -12,6 +12,7 @@ module "ec2" {
   instance_type          = var.instance_type
   associate_public_ip_address = true
 #   key_name               = ""
+  user_data = "${path.root}/files/init-script.sh"
   putin_khuylo           = var.putin
   vpc_security_group_ids = var.vpc_security_group_ids
   subnet_id              = var.subnet_id
