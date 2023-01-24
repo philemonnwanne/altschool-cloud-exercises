@@ -68,3 +68,11 @@ provider "aws" {
   region = var.aws_region
 }
 ```
+
+
+
+#### Possible errors you might encounter
+![error image goes here]
+Fix: 
+   Change this: `ssh-22-tcp`
+   To this: `ssh-tcp`

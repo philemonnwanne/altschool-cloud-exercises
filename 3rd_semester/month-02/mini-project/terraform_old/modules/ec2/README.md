@@ -1,1 +1,0 @@
-# This module creates three ec2 instances running a web server in the vpc resource

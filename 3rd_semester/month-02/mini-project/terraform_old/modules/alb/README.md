@@ -1,1 +1,0 @@
-# This module creates an application load balancer in the vpc resource
