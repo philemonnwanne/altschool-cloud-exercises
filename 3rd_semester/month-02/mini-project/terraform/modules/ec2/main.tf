@@ -12,17 +12,9 @@ module "ec2" {
   user_data = file("./files/init-script.tpl")
   vpc_security_group_ids = var.vpc_security_group_ids
   putin_khuylo           = var.putin
-  key_name               = module.key_pair.key_pair_name
+  key_name               = var.key_name
   subnet_id              = var.subnet_id
   availability_zone      = var.availability_zone
   
   tags = var.tags
-}
-
-module "key_pair" {
-  source = "terraform-aws-modules/key-pair/aws"
-
-  key_name           = "webserver-key"
-  create_private_key = true
-  create = false
 }

@@ -27,6 +27,12 @@ variable "vpc_security_group_ids" {
   type        = list(string)
 }
 
+variable "key_name" {
+  description = "key name of the key-pair to use for the instances"
+  type = string
+  default = "webserver-key"
+}
+
 variable "subnet_id" {
   description = "VPC subnet to launch instance"
   type        = string
