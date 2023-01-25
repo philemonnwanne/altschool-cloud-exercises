@@ -17,3 +17,8 @@ output "mini_vpc_security_group_id" {
     description = "project VPC default security group ID"
     value = module.vpc.default_security_group_id
 }
+
+output "azs" {
+    description = "AZ to start the instance in"
+    value = module.vpc.azs
+}
