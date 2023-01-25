@@ -23,11 +23,11 @@ output "final_webserver_security_group_id" {
     value = module.security.webserver_security_group_id
 }
 
-# output "final_instance_public_ip" {
-#     description = "public IP addresses of EC2 webserver instances"
-#     value = module.ec2.webserver_public_ip
-# }
+output "final_instance_public_ip" {
+    description = "public IP addresses of EC2 webserver instances"
+    value = module.ec2.*.webserver_public_ip
+}
 
-# output "number-of-instances-created" {
-#     value = length(module.ec2.webserver_id)
-# }
+output "number-of-instances-created" {
+    value = length(module.ec2.*.webserver_id)
+}
