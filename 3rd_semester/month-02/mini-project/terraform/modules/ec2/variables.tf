@@ -11,10 +11,9 @@ variable "ami_id" {
   }
 }
 
-variable "instance_count" {
-  description = "create 3 similar EC2 instances"
-  type        = number
-  default     = 3
+variable "availability_zone" {
+  description = "availability zones for VPC"
+  type        = string
 }
 
 variable "instance_name" {
@@ -26,13 +25,11 @@ variable "instance_name" {
 variable "vpc_security_group_ids" {
   description = "security group to associate with the webserver instances"
   type        = list(string)
-  # default = [ "" ]
 }
 
 variable "subnet_id" {
   description = "VPC subnet to launch instance"
   type        = string
-  # default = ""
 }
 
 variable "instance_type" {
@@ -41,11 +38,15 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "user_data" {
-  description = "the script to run on (first) instance boot"
-  type        = string
-  default     = "./files/init-script.sh"
+variable "tags" {
+  type = map
 }
+
+# variable "user_data" {
+#   description = "the script to run on (first) instance boot"
+#   type        = string
+#   default     = "./files/init-script.sh"
+# }
 
 variable "putin" {
   description = "putin_khuylo means {putin [is a] dickhead}. The phrase has become a protest song and is widely spread in Ukraine amongst supporters of Ukrainian sovereignty and territorial integrity, as well as those opposing Vladimir Putin in both Russia and Ukraine."
