@@ -47,13 +47,13 @@ variable "inventory_path" {
 }
 
 variable "ansible_switch" {
-   description = "valid options you can pass to the ansible playbook command"
+  description = "valid options you can pass to the ansible playbook command"
   type        = string
   default     = "-i"
 }
 
 variable "ansible_cmd" {
-   description = "valid options you can pass to the ansible playbook command"
+  description = "valid options you can pass to the ansible playbook command"
   type        = string
   default     = "ansible-playbook"
 }
