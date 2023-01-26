@@ -6,10 +6,10 @@
 # systemctl start apache2
 
 # COMMENT OUT FOR USE WITH AMAMZON-LINUX 2
-yum update -y
-yum install -y httpd
-systemctl start httpd
-systemctl enable httpd
+# yum update -y
+# yum install -y httpd
+# systemctl start httpd
+# systemctl enable httpd
 
 
 export META_INST_ID=`curl http://169.254.169.254/latest/meta-data/instance-id`
@@ -133,4 +133,4 @@ echo "</html>" >> ${document}
 # systemctl restart apache2
 
 # COMMENT OUT TO RESTART THE APACHE SERVICE ON AMAZON_LINUX
-systemctl restart httpd
+# systemctl restart httpd

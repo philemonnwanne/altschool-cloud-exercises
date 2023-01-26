@@ -3,6 +3,7 @@
   ansible.builtin.script: /home/vagrant/ansible/roles/httpd/files/init-script.sh
   args:
     chdir: /home/ec2-user
+  notify: restart httpd svc
 
 - name: set timezone to Africa/Lagos
   timezone:
