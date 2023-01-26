@@ -92,7 +92,3 @@ resource "local_file" "host_inventory" {
     command = "${var.ansible_cmd} ${var.ansible_switch} ${var.inventory_path} ${var.playbook_path}"
   }
 }
-
-# provisioner "local-exec" {
-#   command = "echo ${self.public_ip} >> host-inventory.txt"
-# }

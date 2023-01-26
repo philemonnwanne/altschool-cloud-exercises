@@ -37,7 +37,7 @@ variable "server_group_vars" {
 variable "playbook_path" {
   description = "path where the playbook resides"
   type        = string
-  default     = "[webservers:vars]"
+  default     = "../ansible/playbook.yml"
 }
 
 variable "inventory_path" {
@@ -55,5 +55,5 @@ variable "ansible_switch" {
 variable "ansible_cmd" {
    description = "valid options you can pass to the ansible playbook command"
   type        = string
-  default     = "-i"
+  default     = "ansible-playbook"
 }
