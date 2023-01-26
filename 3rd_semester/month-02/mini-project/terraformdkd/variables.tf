@@ -10,12 +10,6 @@ variable "instance_name" {
   default     = "webserver-"
 }
 
-variable "domain_name" {
-  description = "domain name to attach "
-  type        = string
-  default     = "philemonnwanne.me"
-}
-
 variable "ansible_user" {
   description = "the user ansbile will log in as"
   type        = string
@@ -53,19 +47,13 @@ variable "inventory_path" {
 }
 
 variable "ansible_switch" {
-   description = "valid options you can pass to the ansible playbook command"
+  description = "valid options you can pass to the ansible playbook command"
   type        = string
   default     = "-i"
 }
 
 variable "ansible_cmd" {
-   description = "valid options you can pass to the ansible playbook command"
+  description = "valid options you can pass to the ansible playbook command"
   type        = string
   default     = "ansible-playbook"
-}
-
-variable "ssh_common_args" {
-  description = "extra arguments passed to the SSH command"
-  type        = string
-  default     = "--ssh-common-args='-o StrictHostKeyChecking=no'"
 }

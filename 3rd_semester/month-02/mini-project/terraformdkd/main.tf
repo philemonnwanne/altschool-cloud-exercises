@@ -73,30 +73,22 @@ module "route53" {
 
   records = [
     {
-      name = ""
+      name = "terraform-test"
       type    = "A"
       alias   = {
         name    = module.alb.lb_dns_name
         zone_id = module.alb.lb_zone_id
       }
-    },
-    {
-      name = "terraform-test"
-      type    = "CNAME"
-      ttl = 300
-      records = [
-        "${var.domain_name}"
-      ]
     }
   ]
 }
 
-# create inventory file for use by ansible inside the ansible directory, then deploy the ansible playbook
+# create inventory file for use by ansible inside the ansible directory
 resource "local_file" "host_inventory" {
   content  = "${var.server_group}\n${module.ec2.*.webserver_public_ip[0]}\n${module.ec2.*.webserver_public_ip[1]}\n${module.ec2.*.webserver_public_ip[2]}\n${var.server_group_vars}\n${var.ansible_user}\n${var.ansible_ssh_private_key_file}"
   filename = var.inventory_path
 
   provisioner "local-exec" {
-    command = "${var.ansible_cmd} ${var.ansible_switch} ${var.inventory_path} ${var.playbook_path} ${var.ssh_common_args} "
+    command = "${var.ansible_cmd} ${var.ansible_switch} ${var.inventory_path} ${var.playbook_path}"
   }
 }
