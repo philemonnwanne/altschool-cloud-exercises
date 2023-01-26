@@ -1,0 +1,9 @@
+---
+- name: script to install static page
+  ansible.builtin.script: /home/vagrant/ansible/roles/apache/files/init-script.sh
+  args:
+    chdir: /home/ubuntu
+
+- name: set timezone to Africa/Lagos
+  timezone:
+    name: Africa/Lagos
