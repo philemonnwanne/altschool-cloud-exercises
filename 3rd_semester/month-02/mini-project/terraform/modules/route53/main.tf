@@ -1,4 +1,4 @@
-
+# this block retrieves info about an existing hosted zone, which is in turn used to poupulate the records module
 data "aws_route53_zone" "zone" {
   zone_id      = var.zone_id
   private_zone = false
