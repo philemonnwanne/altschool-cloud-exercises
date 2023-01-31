@@ -1,5 +1,12 @@
 ![integration](./images/Ansible_and_Terraform_Integration.png)
 
+
+My Deployment: https://terraform-test.philemonnwanne.me/
+
+IAM SignIn Link: https://philemonnwanne.signin.aws.amazon.com/console
+
+
+
 * Prerequsites
 To deploy this project, you'll need:
   * The Terraform CLI installed
@@ -11,24 +18,9 @@ To deploy this project, you'll need:
 
  Note: I am also assuming you have basic to intermediate knowledge of AWS, Terraform and Ansible.
 
-To use your IAM credentials to authenticate the Terraform AWS provider, set the `AWS_ACCESS_KEY_ID` and secret key environment variables by running the following commands, we'll be using this later.
 
-```php
-export AWS_ACCESS_KEY_ID="insert your AWS ACCESS KEY here"
-```
+### TO Deploy this project 
 
-```php
-export AWS_SECRET_ACCESS_KEY="insert your AWS SECRET KEY here"
-```
-
-Tip: <span> If you don't have access to IAM user credentials, use another authentication method described in the AWS provider documentation.</span>
-
-Warning: This tutorial will only provision resources that qualify under the <bold>AWS free tier<bold>. While following it please be sure that your AWS account qualifies for free tier resources, as I'll not responsible for any charges that you may incur.
-
-###### Note: 
-  This prooject deploys automatically to the `us-east-1` region you can change this to whatever region is closer to you inorder to avoid latency issues.
-
-### TO Deploy this project first 
 
 Clone this repo
 
@@ -37,9 +29,16 @@ git clone https://github.com/philemonnwanne/altschool-cloud-exercises.git
 ```
 
 
-cd into the terraform directory and run terraform init
+cd into the terraform directory and run 
 
-then run terraform plan to know what chnages will be made to your AWS
+```php
+terraform init
+```
+
+ to know what changes terraform will make to your infrastructure run
+```php
+terraform plan to
+```
 
 Deploy terraform config
 
@@ -48,12 +47,9 @@ terraform apply -auto-approve
 ```
 
 Note: Don't forget to run `terraform destroy` when you're done to clean up
-
-
-View My Deployment: https://terraform-test.philemonnwanne.me/
-
-IAM User SignIn Link: https://philemonnwanne.signin.aws.amazon.com/console
-
+</br>
+</br>
+</br>
 
 ## Main Project structure
 
