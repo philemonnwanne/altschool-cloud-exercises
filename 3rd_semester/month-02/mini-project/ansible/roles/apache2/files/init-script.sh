@@ -1,8 +1,9 @@
 #!/bin/bash
-COMMENT OUT FOR USE WITH UBUNTU [20.04-22.04]
-apt update -y
-apt install -y apache2
-systemctl start apache2
+
+# COMMENT OUT FOR USE WITH UBUNTU [20.04-22.04]
+# apt update -y
+# apt install -y apache2
+# systemctl start apache2
 
 # COMMENT OUT FOR USE WITH AMAMZON-LINUX 2
 # yum update -y
@@ -15,6 +16,8 @@ export META_INST_ID=`curl http://169.254.169.254/latest/meta-data/instance-id`
 export META_INST_TYPE=`curl http://169.254.169.254/latest/meta-data/instance-type`
 export META_INST_AZ=`curl http://169.254.169.254/latest/meta-data/placement/availability-zone`
 # export META_INST_PRIVATE_IP=`curl http://169.254.169.254/latest/meta-data/local-ipv4`
+export META_INST_TAGS_NAME=`curl http://169.254.169.254/latest/meta-data/tags/instance/Name`
+
 export META_INST_LOCAL_HOSTNAME=`curl http://169.254.169.254/latest/meta-data/local-hostname`
 export META_INST_PUBLIC_IP=`curl http://169.254.169.254/latest/meta-data/public-ipv4`
 
@@ -94,7 +97,7 @@ echo "<body>" >> ${document}
 echo "    <div class="wrapper">" >> ${document}
 echo "        <div class="instance-card">" >> ${document}
 echo "            <div class="instance-card__cnt">" >> ${document}
-echo "                <div class="instance-card__name">Instance $META_INST_ID is running!</div>" >> ${document}
+echo "                <div class="instance-card__name">" $META_INST_TAGS_NAME is UP! "</div>" >> ${document}
 echo "                <div class="instance-card-inf">" >> ${document}
 
 echo "                    <div class="instance-card-inf__item">" >> ${document}
@@ -103,6 +106,7 @@ echo "                        <div class="instance-card-inf__title">" $META_INST
 echo "                    </div>" >> ${document}
 
 echo "                    <div class="instance-card-inf__item">" >> ${document}
+echo "                      <a href="https://icons8.com/icon/3HiGHOeRVImh/nas"><img src="https://img.icons8.com/3d-fluency/94/null/nas.png" width="80" height="100" /></a>" >> ${document}
 echo "                        <div class="instance-card-inf__txt">Instance Type</div>" >> ${document}
 echo "                        <div class="instance-card-inf__title">" $META_INST_TYPE "</div>" >> ${document}
 echo "                    </div>" >> ${document}
@@ -110,11 +114,6 @@ echo "                    </div>" >> ${document}
 echo "                    <div class="instance-card-inf__item">" >> ${document}
 echo "                        <div class="instance-card-inf__txt">Public IP</div>" >> ${document}
 echo "                        <div class="instance-card-inf__title">" $META_INST_PUBLIC_IP "</div>" >> ${document}
-echo "                    </div>" >> ${document}
-
-echo "                    <div class="instance-card-inf__item">" >> ${document}
-echo "                        <div class="instance-card-inf__txt">Local Hostname</div>" >> ${document}
-echo "                        <div class="instance-card-inf__title">" $META_INST_LOCAL_HOSTNAME "</div>" >> ${document}
 echo "                    </div>" >> ${document}
 
 echo "                    <div class="instance-card-inf__item">" >> ${document}
@@ -129,7 +128,7 @@ echo "</body>" >> ${document}
 echo "</html>" >> ${document}
 
 # COMMENT OUT TO RESTART THE APACHE SERVICE ON UBUNTU
-systemctl restart apache2
+# systemctl restart apache2
 
 # COMMENT OUT TO RESTART THE APACHE SERVICE ON AMAZON_LINUX
 # systemctl restart httpd
