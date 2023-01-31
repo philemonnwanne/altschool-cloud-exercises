@@ -53,7 +53,10 @@ By the end of this project, our terraform directory would look like the image be
 ### TO Deploy this project first 
 
 Clone this repo
-git clone 
+
+```php
+git clone https://github.com/philemonnwanne/altschool-cloud-exercises.git
+```
 
 cd into the terraform directory and run terraform init
 
