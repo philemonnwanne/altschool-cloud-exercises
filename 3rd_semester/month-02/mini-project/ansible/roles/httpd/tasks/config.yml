@@ -1,6 +1,6 @@
 ---
 - name: script to install static page
-  ansible.builtin.script: /home/vagrant/ansible/roles/httpd/files/init-script.sh
+  ansible.builtin.script: ../files/init-script.sh
   args:
     chdir: /home/ec2-user
   notify: restart httpd svc
