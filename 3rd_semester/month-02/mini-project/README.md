@@ -6,10 +6,8 @@ My Deployment: https://terraform-test.philemonnwanne.me/
 IAM SignIn Link: https://philemonnwanne.signin.aws.amazon.com/console
 
 </br>
-</br>
-</br>
 
-* Prerequsites
+## Prerequsites
 To deploy this project, you'll need:
   * The Terraform CLI installed
   * The AWS CLI installed
