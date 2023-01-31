@@ -50,7 +50,9 @@ terraform apply -auto-approve
 Note: Don't forget to run `terraform destroy` when you're done to clean up
 
 
-### View My Deployment: https://terraform-test.philemonnwanne.me/
+View My Deployment: https://terraform-test.philemonnwanne.me/
+
+IAM User SignIn Link: https://philemonnwanne.signin.aws.amazon.com/console
 
 
 ## Main Project structure
