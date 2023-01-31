@@ -15,6 +15,11 @@ module "ec2" {
   key_name               = var.key_name
   subnet_id              = var.subnet_id
   availability_zone      = var.availability_zone
-  
+  metadata_options = {
+    http_endpoint               = "enabled"
+    http_tokens                 = "optional"
+    http_put_response_hop_limit = 8
+    instance_metadata_tags      = "enabled"
+  }
   tags = var.tags
 }
