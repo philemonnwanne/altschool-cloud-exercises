@@ -23,28 +23,9 @@ export AWS_ACCESS_KEY_ID="insert your AWS ACCESS KEY here"
 export AWS_SECRET_ACCESS_KEY="insert your AWS SECRET KEY here"
 ```
 
-_ Tip: <span> If you don't have access to IAM user credentials, use another authentication method described in the AWS provider documentation here ![AWS IAM doc](https://aws.com). <span>
+Tip: <span> If you don't have access to IAM user credentials, use another authentication method described in the AWS provider documentation.</span>
 
 This tutorial will only provision resources that qualify under the <bold>AWS free tier<bold>. While following it please be sure that your AWS account qualifies for free tier resources, as I'll not responsible for any charges that you may incur.
-
-
-## Main Project structure
-
-First of all, don’t put everything in one file, you need to have a project folder structure for code reusability, code sharing, code maintenance, and code clarity. A typical Terraform folder structure will look like the following. Terraform has also made things easy for us by providing what we call Terraform modules, modules are basically reusable pieces of code just like functions or libraries.
-
-By the end of this project, our terraform directory would look like the image below
-
-## Main Project structure
-
-![project structure](./images/mini_project_dir_structure.png)
-
-## Terraform Directory structure
-
-![project structure](./images/terraform_dir_structure.png)
-
-## Ansible Directory structure
-
-![project structure](./images/ansible_dir_structure.png)
 
 ###### Note: 
 1. All files in your Terraform directory using the .tf file format will be automatically loaded during operations.
@@ -70,3 +51,16 @@ Don't forget to run terraform destroy when you're done to clean up
 VIEW MY DEPLOYMENT
 
 https://terraform-test.philemonnwanne.me/
+
+
+## Main Project structure
+
+![project structure](./images/mini_project_dir_structure.png)
+
+## Terraform Directory structure
+
+![project structure](./images/terraform_dir_structure.png)
+
+## Ansible Directory structure
+
+![project structure](./images/ansible_dir_structure.png)
