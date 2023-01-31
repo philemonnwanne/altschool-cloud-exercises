@@ -1,8 +1,16 @@
 ![integration](./images/terra-ans-aws-transparent.svg)
 
 
-#### Deployment Link: https://terraform-test.philemonnwanne.me
+# [Altschool](https://altschoolafrica.com)-Mini-Project
 
-#### IAM SignIn Link: https://philemonnwanne.signin.aws.amazon.com/console
+#### Deployment: https://terraform-test.philemonnwanne.me
+<br>
 
-#### Deploy Project - [How to Deploy this Project](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/3rd_semester/month-02/mini-project/Deployment.md)
+### AWS CLOUD CREDENTIALS
+
+Click [here](https://philemonnwanne.signin.aws.amazon.com/console) to connect any of the users below to my aws console
+
+
+### DEPLOY PROJECT
+
+[How to Deploy this Project](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/3rd_semester/month-02/mini-project/Deployment.md)
