@@ -25,7 +25,7 @@ variable "ansible_user" {
 variable "ansible_ssh_private_key_file" {
   description = "private key file to access the webserver instances"
   type        = string
-  default     = "ansible_ssh_private_key_file=/home/vagrant/ansible/webserver-key.pem"
+  default     = "ansible_ssh_private_key_file=../ansible/webserver-key.pem"
 }
 
 variable "server_group" {
