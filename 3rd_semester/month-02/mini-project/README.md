@@ -36,13 +36,18 @@ Clone this repo
 git clone https://github.com/philemonnwanne/altschool-cloud-exercises.git
 ```
 
+
 cd into the terraform directory and run terraform init
 
 then run terraform plan to know what chnages will be made to your AWS
 
-terraform apply -auto-approve
+Deploy terraform config
 
-Don't forget to run terraform destroy when you're done to clean up
+```php
+terraform apply -auto-approve
+```
+
+Note: Don't forget to run `terraform destroy` when you're done to clean up
 
 
 VIEW MY DEPLOYMENT
