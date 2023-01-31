@@ -39,7 +39,7 @@ terraform init
 
  to know what changes terraform will make to your infrastructure run
 ```php
-terraform plan to
+terraform plan
 ```
 
 Deploy terraform config
