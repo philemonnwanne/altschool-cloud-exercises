@@ -1,4 +1,4 @@
-![integration](./images/Ansible_and_Terraform_Integration.png)
+![integration](./images/terra-ans-aws-transparent.svg)
 
 
 My Deployment: https://terraform-test.philemonnwanne.me/
