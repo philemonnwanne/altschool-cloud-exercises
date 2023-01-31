@@ -1,7 +1,7 @@
 ![integration](./images/terra-ans-aws-transparent.svg)
 
 
-#### Deployment Link: https://terraform-test.philemonnwanne.me/
+#### Deployment Link: https://terraform-test.philemonnwanne.me
 
 #### IAM SignIn Link: https://philemonnwanne.signin.aws.amazon.com/console
 
