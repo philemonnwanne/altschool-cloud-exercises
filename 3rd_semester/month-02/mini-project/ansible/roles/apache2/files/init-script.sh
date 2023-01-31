@@ -117,7 +117,7 @@ echo "                        <div class="instance-card-inf__title">" $META_INST
 echo "                    </div>" >> ${document}
 
 echo "                    <div class="instance-card-inf__item">" >> ${document}
-echo "                        <div class="instance-card-inf__txt">Availability zone</div>" >> ${document}
+echo "                        <div class="instance-card-inf__txt">Availability Zone</div>" >> ${document}
 echo "                        <div class="instance-card-inf__title">" $META_INST_AZ "</div>" >> ${document}
 echo "                    </div>" >> ${document}
 
