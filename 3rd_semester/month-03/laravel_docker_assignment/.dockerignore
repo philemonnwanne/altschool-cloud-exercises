@@ -1,8 +1,8 @@
 .git
 .gitignore
-**/docker-compose*
+# **/docker-compose*
 # **/compose*
-**/Dockerfile*
-README.md
+# **/Dockerfile*
+# README.md
 LICENSE
 .vscode
