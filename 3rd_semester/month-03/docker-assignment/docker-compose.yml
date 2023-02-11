@@ -2,15 +2,16 @@ version: '3'
 services:
   
   #PHP Service
-  app:
+  laravel_app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app
+    image: laravel_image
+    container_name: laravel_app
     restart: unless-stopped
     tty: true
     environment:
-      SERVICE_NAME: app
+      SERVICE_NAME: laravel_app
       SERVICE_TAGS: dev
     working_dir: /var/www/laravel-src/
     volumes:
@@ -21,9 +22,9 @@ services:
       - laravel-network
 
   #Nginx Service
-  webserver:
+  nginx_webserver:
     image: nginx:alpine
-    container_name: webserver
+    container_name: nginx_webserver
     restart: unless-stopped
     tty: true
     ports:
@@ -36,9 +37,9 @@ services:
       - laravel-network
 
   #MySQL Service
-  database:
+  mysql_database:
     image: mysql:${MYSQL_VERSION}
-    container_name: database
+    container_name: mysql_database
     restart: unless-stopped
     tty: true
     ports:
