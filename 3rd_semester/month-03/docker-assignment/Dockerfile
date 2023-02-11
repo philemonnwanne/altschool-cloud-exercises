@@ -1,14 +1,7 @@
 FROM php:8.2-fpm
 
-# set composer related environment variables
-ENV PATH="/composer/vendor/bin:$PATH" \
-    COMPOSER_ALLOW_SUPERUSER=1 \
-    COMPOSER_VENDOR_DIR=/var/www/laravel-src/vendor \
-    COMPOSER_HOME=/composer
-
 # Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
- && composer --ansi --version --no-interaction
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Copy composer.lock and composer.json
 COPY ./laravel-src/composer.lock ./laravel-src/composer.json /var/www/laravel-src/
@@ -38,10 +31,8 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
-# Copy existing application directory contents
+# copy everything in the project into the container
 COPY ./laravel-src/ /var/www/laravel-src/
-
-RUN composer install --ansi --no-interaction
 
 # Copy existing application directory permissions
 COPY --chown=laravel-src:laravel-src . /var/www/laravel-src/

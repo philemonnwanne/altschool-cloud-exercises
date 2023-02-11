@@ -16,7 +16,6 @@ services:
     working_dir: /var/www/laravel-src/
     volumes:
       - ./laravel-src/:/var/www/laravel-src/
-      # - ./laravel-src/vendor/:/var/www/laravel-src/
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - laravel-network
@@ -53,6 +52,14 @@ services:
       - ./mysql-logs/:/var/lib/mysql/
     networks:
       - laravel-network
+    
+  #Composer Service
+  composer:
+    image: composer:latest
+    container_name: composer
+    command: ["composer", "install"]
+    volumes:
+      - ./laravel-src/:/app
 
 #Docker Networks
 networks:
