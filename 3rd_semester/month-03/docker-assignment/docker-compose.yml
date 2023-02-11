@@ -48,8 +48,9 @@ services:
       MYSQL_DATABASE: "${DB_DATABASE}"
       MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
     volumes:
-      - database_data:/var/lib/mysql
+      # - database_data:/var/lib/mysql
       - ./mysql/my.cnf:/etc/mysql/my.cnf
+      - ./mysql-logs/:/var/lib/mysql/
     networks:
       - laravel-network
 
@@ -59,6 +60,6 @@ networks:
     driver: bridge
 
 #Docker Volumes
-volumes:
-  database_data:
-    driver: local
+# volumes:
+#   database_data:
+#     driver: local
