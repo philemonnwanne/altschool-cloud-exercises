@@ -1,7 +1,7 @@
 version: '3'
 services:
   
-  #PHP Service
+  #Laravel Service
   laravel_app:
     build:
       context: .
@@ -60,7 +60,7 @@ networks:
   laravel-network:
     driver: bridge
 
-#Volumes
+#Docker Volumes
 volumes:
   database_data:
     driver: local
