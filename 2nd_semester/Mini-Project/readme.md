@@ -95,7 +95,7 @@ apt install ./mysql-apt-config_0.8.22-1_all.deb
 <span>Confirm addition of mySQL 8.0 repository as default when prompted</span>
 
 
-![mysql-prompt-image](/Mini-Project/images/mysql-prompt.png)
+![mysql-prompt-image](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/2nd_semester/Mini-Project/images/mysql-prompt.png)
 
 Use the down arrow key to choose OK, then press `Tab` and hit `Enter` (as shown in the image above) - Would be done twice
 
@@ -393,9 +393,9 @@ To confirm that your site is set up properly, visit `https://your_domain` in you
 #### Rendered Page
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/Mini-Project/images/mini-proj-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="/Mini-Project/images/mini-proj.png">
-  <img alt="Shows the rendered page in light mode and in dark mode." src="/Mini-Project/images/mini-proj.png">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/2nd_semester/Mini-Project/images/mini-proj-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/2nd_semester/Mini-Project/images/mini-proj.png">
+  <img alt="Shows the rendered page in light mode and in dark mode." src="https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/2nd_semester/Mini-Project/images/mini-proj.png">
 </picture>
 
 
@@ -410,9 +410,9 @@ This will return a list of all the possible endpoints in the project and you can
 
 #### API's/Endpoints
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/Mini-Project/images/endpoints-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="/Mini-Project/images/endpoints.png">
-  <img alt="Shows the endpoints in light mode and in dark mode." src="https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Mini-Project/images/endpoints.png">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/2nd_semester/Mini-Project/images/endpoints-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/2nd_semester/Mini-Project/images/endpoints.png">
+  <img alt="Shows the endpoints in light mode and in dark mode." src="https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/2nd_semester/Mini-Project/images/endpoints.png">
 </picture>
 
 
